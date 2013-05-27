@@ -3,8 +3,150 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ec6122536d2fd287fbfed1e23ebb8601",
+    "hash": "7f3e23df861a9d5fa17b1350b479b7c0",
     "packages": [
+        {
+            "name": "symfony/config",
+            "version": "2.3.x-dev",
+            "target-dir": "Symfony/Component/Config",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Config.git",
+                "reference": "4d9aa3f2a8ec1e2ba495bd28ba3711242ce065f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/4d9aa3f2a8ec1e2ba495bd28ba3711242ce065f5",
+                "reference": "4d9aa3f2a8ec1e2ba495bd28ba3711242ce065f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/filesystem": ">=2.3,<3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Config\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Config Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-05-18 21:11:24"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "2.3.x-dev",
+            "target-dir": "Symfony/Component/Filesystem",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Filesystem.git",
+                "reference": "v2.3.0-RC1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/v2.3.0-RC1",
+                "reference": "v2.3.0-RC1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-05-06 20:03:44"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "2.3.x-dev",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "v2.3.0-RC1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/v2.3.0-RC1",
+                "reference": "v2.3.0-RC1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-05-10 18:12:13"
+        },
         {
             "name": "twig/twig",
             "version": "v1.13.0",
@@ -62,9 +204,11 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "symfony/config": 20,
+        "symfony/filesystem": 20,
+        "symfony/yaml": 20
+    },
     "platform": [
 
     ],

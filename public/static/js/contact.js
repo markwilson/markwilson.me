@@ -23,7 +23,7 @@ var ContactForm = {
         }
 
         $.ajax({
-            url: '/contact.php',
+            url: '/contact',
             type: 'POST',
             data: formValues,
             dataType: 'json',

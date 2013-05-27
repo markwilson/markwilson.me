@@ -1,8 +1,5 @@
 <?php
 
-// include the constants - i.e. define(CONTACT_EMAIL_ADDRESS, ...);
-require_once '../constants.php';
-
 // sanitise/validate input
 $name    = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 $email   = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -18,7 +15,7 @@ if ($name === '' || $email === '' || $message === '' || !preg_match($emailRegExp
 
 // send email with contact details
 mail(
-    CONTACT_EMAIL_ADDRESS,
+    $parameters['contact_email_address'],
     'Website contact form submission',
     'Contact form submission from: ' . $name . ' <' . $email . '>' . PHP_EOL . PHP_EOL . 'Message: ' . $message
 );

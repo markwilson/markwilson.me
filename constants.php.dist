@@ -1,4 +1,0 @@
-<?php
-
-define('CONTACT_EMAIL_ADDRESS', 'Mark Wilson <mark@example.com>');
-define('GOOGLE_ANALYTICS_CODE', 'UA-12345678-9');
