@@ -1,2 +1,6 @@
 /.idea
 /constants.php
+!.gitkeep
+/app/cache/*
+/app/logs/*
+/vendor/
