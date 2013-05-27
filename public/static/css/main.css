@@ -18,6 +18,9 @@ ul.cyclic-list > li:first-child {
 #codefor {
     margin-top: 1em;
 }
+textarea {
+    resize: vertical;
+}
 
 ul.cyclic-list > li:first-child {
     -webkit-animation: cycle 6s infinite ease-in-out;
