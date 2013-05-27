@@ -1,5 +1,15 @@
 <?php
 
+if (!defined('APPLICATION_ENV')) {
+    $env = getenv('APPLICATION_ENV');
+
+    if (!$env) {
+        $env = 'production';
+    }
+
+    define('APPLICATION_ENV', $env);
+}
+
 require_once '../vendor/autoload.php';
 
 // include the constants - i.e. define(GOOGLE_ANALYTICS_CODE, ...);
