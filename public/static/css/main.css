@@ -1,0 +1,59 @@
+body {
+    margin-top: 5em;
+}
+
+ul.cyclic-list {
+    overflow: hidden;
+    height: 1.5em;
+}
+ul.cyclic-list > li {
+    line-height: 1.5em;
+}
+ul.cycle-list > li:last-child {
+    margin-bottom: 0;
+}
+ul.cyclic-list > li:first-child {
+    margin-top: 0; /* animate this by 1.5em */
+}
+#codefor {
+    margin-top: 1em;
+}
+
+ul.cyclic-list > li:first-child {
+    -webkit-animation: cycle 6s infinite ease-in-out;
+    -moz-animation: cycle 6s infinite ease-in-out;
+    -o-animation: cycle 6s infinite ease-in-out;
+}
+@-webkit-keyframes cycle {
+    0% { margin-top: 0; }
+    15% { margin-top: 0; }
+    25% { margin-top: -4.5em; }
+    40% { margin-top: -4.5em; }
+    50% { margin-top: -9em; }
+    65% { margin-top: -9em; }
+    75% { margin-top: -13.5em; }
+    90% { margin-top: -13.5em; }
+    100% { margin-top: 0; }
+}
+@-moz-keyframes cycle {
+    0% { margin-top: 0; }
+    15% { margin-top: 0; }
+    25% { margin-top: -4.5em; }
+    40% { margin-top: -4.5em; }
+    50% { margin-top: -9em; }
+    65% { margin-top: -9em; }
+    75% { margin-top: -13.5em; }
+    90% { margin-top: -13.5em; }
+    100% { margin-top: 0; }
+}
+@-o-keyframes cycle {
+    0% { margin-top: 0; }
+    15% { margin-top: 0; }
+    25% { margin-top: -4.5em; }
+    40% { margin-top: -4.5em; }
+    50% { margin-top: -9em; }
+    65% { margin-top: -9em; }
+    75% { margin-top: -13.5em; }
+    90% { margin-top: -13.5em; }
+    100% { margin-top: 0; }
+}
