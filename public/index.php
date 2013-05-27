@@ -1,3 +1,9 @@
+<?php
+
+// include the constants - i.e. define(GOOGLE_ANALYTICS_CODE, ...);
+require_once '../constants.php';
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -86,10 +92,11 @@
             </div>
         </div>
 
+<?php if (APPLICATION_ENV === 'production'): ?>
         <script type="text/javascript">
 
             var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-41253476-1']);
+            _gaq.push(['_setAccount', '<?php echo GOOGLE_ANALYTICS_CODE; ?>']);
             _gaq.push(['_trackPageview']);
 
             (function() {
@@ -99,5 +106,6 @@
             })();
 
         </script>
+<?php endif; ?>
     </body>
 </html>
