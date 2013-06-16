@@ -4,5 +4,8 @@
         "symfony/config": "2.3.x-dev",
         "symfony/filesystem": "2.3.x-dev",
         "symfony/yaml": "2.3.x-dev"
+    },
+    "require-dev": {
+        "filp/whoops": "1.*"
     }
 }
