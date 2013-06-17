@@ -28,11 +28,7 @@ env:
     - secure: "T70+RmJ0gXd9vD6tpvq/cbuoltlz256KzLjgrY7/wMwct8kGhlpT9qEfw851\nzF0yftM8fbnXAmaEprzDECd1czEP93DHHqY5Y6rnZHhwldXrwKJID7O7rDqd\nhNcpI+LbGfOc1Gv9JYxRsyQzmwTFj0Wp8YGA3vTAl4ckrZKCkfM="
     - secure: "CCZueTAg5wv1bkX266KXPeStve53s2yigiYYVaFAkQ1luKaYA/b4oo6/0zdM\nZBEHjy/nwACeQrhTYiZ1N/Z53I82UG2cwks15fTzTJP34tgI/irPbV+zuD8V\nfxUPPoFFcJpPZ2o4G5edi/PdgSnwZ+cln+F2WuLeoEExECCzodU="
     - secure: "JOayLE1BWq0bWS5guIxV0nq96oKEjLxjxltCcs6AY6sh5cBLKvuqFzx/ig4f\nBzY9arTakNOrxUEzz/a2PVlik2u4WFbG44sJPnIUN/H5/Ynd08SmAIE+S3e4\nVcJO3KINnF5Y+3OxyVbCFclQ4fTKZn3BXTWs90Y+xvWjE/ZNcx8="
-before_script:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar --no-interaction install
-  - ./scripts/initialise-deploy-config.sh
-after_success:
+before_install:
   - echo -n $id_rsa_{00..30} >> ~/.ssh/id_rsa_base64
   - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
@@ -40,7 +36,12 @@ after_success:
   - gem install capistrano --no-ri --no-rdoc
   - eval "$(ssh-agent)"
   - ssh-add
-  - cap staging deploy
+before_script:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar --no-interaction install
+  - ./scripts/initialise-deploy-config.sh
+script:
+  - phpunit && cap staging deploy
 branches:
   only:
     - master
