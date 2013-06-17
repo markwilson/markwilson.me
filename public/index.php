@@ -15,10 +15,12 @@ require_once '../vendor/autoload.php';
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Yaml\Yaml;
 
-// initialise whoops exception handling
-$run = new \Whoops\Run();
-$run->pushHandler(new \Whoops\Handler\PrettyPageHandler());
-$run->register();
+if (APPLICATION_ENV === 'development') {
+    // initialise whoops exception handling
+    $run = new \Whoops\Run();
+    $run->pushHandler(new \Whoops\Handler\PrettyPageHandler());
+    $run->register();
+}
 
 $configDirectories = array('../app/config');
 $locator           = new FileLocator($configDirectories);
