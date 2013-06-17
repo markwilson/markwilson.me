@@ -27,7 +27,7 @@ namespace :deploy do
 
     task :finalize_update, :except => { :no_release => true } do
         # run composer update
-        run "cd #{releases_path}/#{release_name} && curl -s http://getcomposer.org/installer | php && php composer.phar --no-dev install && rm composer.phar"
+        run "cd #{releases_path}/#{release_name} && curl -s http://getcomposer.org/installer | php && php composer.phar --no-dev --no-interaction install && rm composer.phar"
 
         # initialise config files
         run "ln -s #{shared_path}/config/parameters.yml #{releases_path}/#{release_name}/app/config/parameters.yml"

@@ -30,7 +30,7 @@ env:
     - secure: "JOayLE1BWq0bWS5guIxV0nq96oKEjLxjxltCcs6AY6sh5cBLKvuqFzx/ig4f\nBzY9arTakNOrxUEzz/a2PVlik2u4WFbG44sJPnIUN/H5/Ynd08SmAIE+S3e4\nVcJO3KINnF5Y+3OxyVbCFclQ4fTKZn3BXTWs90Y+xvWjE/ZNcx8="
 before_script:
   - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install
+  - php composer.phar --no-interaction install
   - ./scripts/initialise-deploy-config.sh
 after_success:
   - echo -n $id_rsa_{00..30} >> ~/.ssh/id_rsa_base64
