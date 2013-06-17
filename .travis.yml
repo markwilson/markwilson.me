@@ -32,13 +32,14 @@ before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install
   - ./scripts/initialise-deploy-config.sh
-after_script:
+after_success:
   - echo -n $id_rsa_{00..30} >> ~/.ssh/id_rsa_base64
   - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
-  - gem install capistrano
+  - gem install capistrano --no-ri --no-rdoc
+  - ssh-agent
   - ssh-add
-  - cap staging deploy 2>&1 > /dev/null
+  - cap staging deploy
 branches:
   only:
     - master
