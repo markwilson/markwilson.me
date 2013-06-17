@@ -1,0 +1,44 @@
+language: php
+php:
+  - 5.4
+env:
+  global:
+    - secure: "I6no6EOMd0q/WrbsFe2ykZpPeHpFaDpuLwGKwjZIp26T49/wWr3Q4Y4urOlT\nTahuke92n0NVKQRQoUV/CWsmXnkeDcxZcM9o+KubLHPA1V0p5r4921Lli9Dg\n+iiywNkTmE0eiQ2Gg25dWjZLWmmjCL0hnA5xoczXNO+0wO9mP/4="
+    - secure: "Nt39H9Z2VRoM7706WjT6Aduh0Vdlj5TfKjT/YTCxJA83V0Ji0hNEe2hZmVww\nn4OLQcr3N3LDtBPXwXRDo/CQC0U14cce2Vb0ZBvrmLXmFXWzhgYEQbi332ei\nVhhxkG5e/7NH2+OhGDBrBGjW12BFMZoEAMmme+Nm5tt9DDHlTso="
+    - secure: "F3tCM2awtzeaNJirW1x1yta5LaGFraIuLxfpKEOKF8Vu7dy8VJjgWOScXAvQ\nbsEv0CccLsQBF6cw2SgsKv/+ktpVF4lSpnCScWQ6bE4W0MvsVQMJhPdD2KmQ\nfhC7kecXMbl/gYcryzzUyiJwP2sK6uCfKMaff81l08ofyJ9b3Uo="
+    - secure: "O2fsVyaVqE8glOfi0ZvmEa6nIDoN5Z5qzk9AU5Gs17CQYDRp/FTF7ZnTM71h\nVz4SqYdHTLdMWxC21Duaes4C5X9m7SYz1j3t9fzNxkoxIr8qcNepNlaI8SyS\nfHlb47dT1QfmgoJeHGy23xBMf8arTsObmHFzr9fcOzpWz0GlyIM="
+    - secure: "RcnXNI64c6u22q/Ft23a3goUEi7B6Qf572fNKBQ7SXmNVd4LDaqVwCwOOIOx\nvv39WP5kS8OJu5eo/fZLyiiMhrtocCvmO6WReF6axPkxudIB1S6fAVF3ch+i\n/JuAas8aNSaO18q2usa0gIczwz768exP1eAofq8rHRjudE/Cobw="
+    - secure: "OnsyuYcVCtOOt4VLuIUqQJ/GnLi34dEbvxOAsuXMB4SIfuy3aInuHXh9UMDr\nln/q9N7IjYMZnGd4PQ/G8kKEqby718SP89jTVZuFD75bLbPdohQv+2q+EM0g\nG+2fcYqbWl4IaX2VXdAm9tm9aIglNVjWBvuW0VC8gTUSm5LGYCw="
+    - secure: "gR+nNxK/3TH0deb46bUXt+y9zO6bHQZhCcgL0vWqlLliO6Q9YM1ehuIobnAI\nxhFz1yIoYDsgqli8CQehkGIQFhSawg4kdwt/EWfwHeIvPMiI3BV0QOe7yaae\n2Ua4wcEbFkBtCWcruiLhPsBMqV+CzgvPJUq0oWCvForR1d8rbn8="
+    - secure: "NeYe1mA3p6r3EU4S8+bZBPpSfCehijbgRpynAKDG9WCus9KlpW8AX5d2R/2b\norV1Y+WzWJTMYDp1qdR942D/F4xe+kKfXC4zaPrQ/5i15CfgbLfivwPhfQXK\nutbuLA0WRu6kfM3p2jsQMz+EQyh2E9Py3SgUI+ltTgr6kFxm3Qk="
+    - secure: "CFZ2LCv2d401OLSqgzDuEw0cBeUnow5+YQhDHalDGuP8M9p1SHNMiR4OGfh8\nvk74Fhq65TFKqOS6bLTHft2yy5QVSemsNlNq9kzJHae6BVJSqTo7PIBy7DiZ\n/WmOPILftiuBsRfxhcWS0pj54zMFse/NhHtYr/HPR2ORK1ahE+g="
+    - secure: "LhhqXLuUpGHWiamzw6Z6YZUUOMa+jZ4JcTmCDO1gCn0poqcQf6bw3uTIkI2H\nooRqS6QnTnciy10GW9+dupRLqf5uS8SdXA+TKImFhFfWCUzfSIRbbYWv3Z1E\nqynrFtzjnIPiK1R+7gzc3LZlqAbCq0HzA68hgjCIHKlMfI/vAyY="
+    - secure: "Y5f3L6BNkWXtlm6Xvuoxs3KbqndjKPoJxuEDfVdYOJi15qcP3nOncaoNDJ0P\nIToBlKfLHIoBA7shVsUtFkVfVfWodgr5jGgRqtGyaOLSvhTvN3Lvak0RGiTL\necFggxfo6qWa8hOnVHY2JnlOiQXuNwk4QSFcyobKtFkCTlgNHXw="
+    - secure: "ESwmXC1D4+WHYpYM/5URypLjnY/Tp13RbIaKC0JI+DWgQt/MYFFlu/VgEajt\n+Q+zUqdHvf1VNeQMbgNZJKKUpyPoXMs6OGN8FZuI0XfI04uoxDcyEOmhXqjc\nL9Gr7VCuWfH/P5mCLyxyZLjpeKIXqk6EQwF/cupBUxbkamLEhY4="
+    - secure: "ClQOwCBi8Kj718bu7CGQ0aBG9UZJdlM7hEN2F3CW+18ek9GcNZiIID36R9u2\nGOzth7+A5WSyPN+WJexwcle9h4z0DpymJ+p+o0t930qUhs5exGvzcLL+lBDP\nmb/5Ld4n+djjXoC4UNCUcN1f1DJmjFM6KFkGii8+CY0+pMcEd5E="
+    - secure: "PAeAjhvApPAIt3UG4eWNOqxCsWsjCPEFll4hVQ45AN/0TTI95V21gPZ957iS\nbCcqeyt7MzWyvpSSBu6j9Z4UYnJT2pWtcfpWa/wDZfP+ez2oLFVDbbHTSVvV\nB2U3qMGk7ae3T+DIc9nE/NpNxPjkyXJiSY/aM3smAFNg9CV7yNQ="
+    - secure: "PQgsbsl/Sw6pTJY2sH6o3gj0emJEXrWcpPkg1RkqPmqaRrmtXjx6hOk8bEHa\nmAtNA3b67zsXvlP6IXNoHYbXkiTHCXyZRXS0AVEqW5zPrEkMaVtp3Ul7rjzQ\nrthOHAe7WbpccCYTS0eHR/G7pkAW1PuHgOZW6iwCVR061KOCSeY="
+    - secure: "M+u7WoFfrmdZXkvJSFYeMVo9s+PE8xTlt1dm9oznCy7Xv4V84M8eByaGXgxB\nnRKng5l75dLCbzKtvqoaOjMvLCgxWNE/nOnDJBPgM3KndFvTb5d8As8piUyW\nFd2dK3FED3WkSSoRkkFgkB21rbAt7KwrE2luK08jv/SbvwQqQlI="
+    - secure: "eghnWyBkRn8QrQqYkU9nxtN6zqUoE8IcG/V3+XDvJ7CjsvNoTLsL2ukMrJoo\nUVxq9DwnNZOtyBc0p2ptNty4GYdwQbtvbPES1gxWGeBKJqlx2x5f1AEX6yHb\n22NsG51fnzQGS6nYJJzW+CWCLhmG6Iw2JZ2AWdiifAaY+hj9kH8="
+    - secure: "WRs4k1T3nE9RKpTxo3xW8QOnKNbcSexnRnK3Z2ehe+Vu89AV16R2UvV0hnQV\n0arCWjX7Ae0va28x84v7TQEhR/VXDaeVgWsII/GVCVu7y7T8GJpPtfZedgZj\nYkDKg9lHbZDJT+hZlz0bnS/UgZtIwsQYZJXhl5YQs8v9pkhmSx4="
+    - secure: "brtiLVVHS3jCuWXemazMrD1L591+RkMnKQV7PPx3+SAYPrY2nt+D8+K+ebcn\nBAJSJ8KqldV/ZhdbkMtt9w/TN44ACA8NREY372WJ61vHBWnVBthPkyiVyCjv\nB3I55tlgiwq0E4mdrMV8OBDMTRYyApClegXHk/E1wmQGxUCcWAU="
+    - secure: "e0dTqnKgYKe7Mlp6AXEYCkreC+zne5vREPoyWUHPDxGX+nNP5hHdWmlS9ajJ\nBZmihxXk4sroINiyTx8adpMUeQoy7rq0ZCzpFTf7XQiZ4i/XnlkbnivomuE+\nz45IzduqnGxqEj+xom6qliITzSAvoUfKVK2RzAYT6R11kmgarV0="
+    - secure: "R+WfSlLpT0XrTvQvwnvvEK7AEYi0wctsAT1B7t2dD6LTGzibTA6U75glxQPZ\nvDby5h3HkZebZal6WbPzKML56EvVnv/KH+K0kasDRz1dHOIoojEpdfQPx8TE\nN36Q3XP+HH2nBm84LcADHzpXWNmegBnhmD+cgadsqZMokgLI56Y="
+    - secure: "U1QPI3DH8v53cxaLP2y/5Br6ie0uYIYcBkLI3HX8RbmdIQRJLhPUDDjXmoCt\nxmc/fC0aRvrJQwFXN+Nu2XBGByS0KIlCIT5gYDczsoP88SSy7/2uUnkykCBo\nTjXrz6GY4THLOv3LoTJuGKGwxYgIg26aOg2sL1CYGo217B92dqc="
+    - secure: "T70+RmJ0gXd9vD6tpvq/cbuoltlz256KzLjgrY7/wMwct8kGhlpT9qEfw851\nzF0yftM8fbnXAmaEprzDECd1czEP93DHHqY5Y6rnZHhwldXrwKJID7O7rDqd\nhNcpI+LbGfOc1Gv9JYxRsyQzmwTFj0Wp8YGA3vTAl4ckrZKCkfM="
+    - secure: "CCZueTAg5wv1bkX266KXPeStve53s2yigiYYVaFAkQ1luKaYA/b4oo6/0zdM\nZBEHjy/nwACeQrhTYiZ1N/Z53I82UG2cwks15fTzTJP34tgI/irPbV+zuD8V\nfxUPPoFFcJpPZ2o4G5edi/PdgSnwZ+cln+F2WuLeoEExECCzodU="
+    - secure: "JOayLE1BWq0bWS5guIxV0nq96oKEjLxjxltCcs6AY6sh5cBLKvuqFzx/ig4f\nBzY9arTakNOrxUEzz/a2PVlik2u4WFbG44sJPnIUN/H5/Ynd08SmAIE+S3e4\nVcJO3KINnF5Y+3OxyVbCFclQ4fTKZn3BXTWs90Y+xvWjE/ZNcx8="
+before_script:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install
+  - ./scripts/initialise-deploy-config.sh
+after_script:
+  - echo -n $id_rsa_{00..30} >> ~/.ssh/id_rsa_base64
+  - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - gem install capistrano
+  - ssh-add
+  - cap staging deploy 2>&1 > /dev/null
+branches:
+  only:
+    - master
