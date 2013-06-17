@@ -31,5 +31,8 @@ namespace :deploy do
 
         # initialise config files
         run "ln -s #{shared_path}/config/parameters.yml #{releases_path}/#{release_name}/app/config/parameters.yml"
+
+        # fix permissions to allow any group member to update
+        run "chmod -R g+w #{releases_path}/#{release_name}"
     end
 end
