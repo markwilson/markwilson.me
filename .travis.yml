@@ -1,0 +1,16 @@
+language: php
+php:
+  - '7.0'
+script: true
+deploy:
+  provider: s3
+  access_key_id: AKIAIV7B7I7FGTILGDRA
+  secret_access_key:
+    secure: Cx9MGwc2LQwGUo+lVHM9QP64GmIqsg7ROS5eMhoNMjcef9n9bSKk7oFJi3NHpAiAunIAAi4XMAOSKgV/6TN8gkzwj00DdXWZ5YiGG1mVCoNZhm4NxwKvS8tlNBa9q5SmZpyvU8hPjfZ5apYIUXzAi5b2H4FCLRYIXSFCWNXHxV0=
+  bucket: markwilson.me
+  local-dir: public
+  acl: public_read
+  region: eu-west-1
+  on:
+    repo: markwilson/markwilson.me
+    branch: move-to-s3
