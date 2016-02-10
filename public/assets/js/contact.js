@@ -23,26 +23,23 @@ var ContactForm = {
         }
 
         $.ajax({
-            url: '/contact',
+            url: 'https://boe3am5nm8.execute-api.eu-west-1.amazonaws.com/prod/get-in-touch',
             type: 'POST',
-            data: formValues,
+            data: JSON.stringify(formValues),
+            contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: function (data) {
-                if (data.success) {
-                    ContactForm.showSuccessMessage();
+                ContactForm.showSuccessMessage();
 
-                    setTimeout(function () {
-                        ContactForm
-                            .closeModal()
-                            .hideSuccessMessage()
-                            .enableInputs()
-                            .hideGenericErrorMessage()
-                            .clearFormValues()
-                        ;
-                    }, 3000);
-                } else {
-                    ContactForm.enableInputs().showGenericErrorMessage();
-                }
+                setTimeout(function () {
+                    ContactForm
+                        .closeModal()
+                        .hideSuccessMessage()
+                        .enableInputs()
+                        .hideGenericErrorMessage()
+                        .clearFormValues()
+                    ;
+                }, 3000);
             },
             error: function () {
                 ContactForm.enableInputs().showGenericErrorMessage();
