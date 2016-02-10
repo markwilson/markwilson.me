@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit>
-    <testsuites>
-        <testsuite name="markwilson.me tests">
-            <directory>./src/tests</directory>
-        </testsuite>
-    </testsuites>
-</phpunit>
