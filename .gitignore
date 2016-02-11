@@ -1,8 +1,0 @@
-/.idea
-/constants.php
-!.gitkeep
-/app/cache/*
-/app/logs/*
-/vendor/
-/app/config/*.yml
-/capistrano/deploy.rb
