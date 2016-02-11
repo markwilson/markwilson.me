@@ -19,4 +19,4 @@ foreach ($pages as $page) {
     file_put_contents(__DIR__ . '/public/' . $pathInfo['filename'], $template->render([]));
 }
 
-`rsync -a static public/assets`;
+`rsync -a static/ public/assets/`;
