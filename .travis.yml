@@ -1,7 +1,7 @@
 language: php
 php:
   - '7.0'
-script: true
+script: php ./build.php
 deploy:
   provider: s3
   access_key_id: AKIAIV7B7I7FGTILGDRA
