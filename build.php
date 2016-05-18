@@ -10,10 +10,10 @@ $twig = new Twig_Environment($loader, [
     'cache' => __DIR__ . '/cache'
 ]);
 
-echo 'Clearing template cache ...' . PHP_EOL;
-$twig->clearCacheFiles();
-
 $fs = new Filesystem();
+
+echo 'Clearing template cache ...' . PHP_EOL;
+$fs->remove(__DIR__ . '/cache');
 
 if ($fs->exists(__DIR__ . '/public')) {
    echo 'Removing existing public folder ...' . PHP_EOL;
