@@ -14,29 +14,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="hero-unit clearfix">
-        <h1>Mark Wilson <small>Web developer</small></h1>
-        <div id="codefor" class="clearfix">
-            <p class="pull-left">Will code for&nbsp;</p>
-            <ul class="unstyled pull-left cyclic-list">
-                <li>food.</li>
-                <li><del class="muted">inflatables</del></li>
-                <li><del class="muted">fish</del></li>
-                <li>knowledge.</li>
-                <li><del class="muted">Superman</del></li>
-                <li><del class="muted">underwear</del></li>
-                <li>fun.</li>
-                <li><del class="muted">acceptance</del></li>
-                <li><del class="muted">no one</del></li>
-                <li>you.</li>
-            </ul>
-        </div>
-        <p class="pull-right">
-            <button data-target="#contact" class="btn btn-primary btn-large" role="button" data-toggle="modal">
-                Get in touch
-            </button>
-        </p>
-    </div>
+    {% block content %}{% endblock %}
 
     <div class="pull-right">
         <ul class="inline">
