@@ -1,5 +1,7 @@
 {
     "require": {
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "symfony/filesystem": "^3.0",
+        "symfony/finder": "^3.0"
     }
 }
