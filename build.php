@@ -9,6 +9,8 @@ $twig = new Twig_Environment($loader, [
 
 $pages = glob(__DIR__ . '/pages/*.html.twig');
 
+mkdir(__DIR__ . '/public/');
+
 foreach ($pages as $page) {
     $templateFile = substr($page, strlen(__DIR__ . '/pages/'));
     $pathInfo = pathinfo($templateFile);
