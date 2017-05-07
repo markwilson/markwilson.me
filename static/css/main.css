@@ -15,7 +15,7 @@ ul.cycle-list > li:last-child {
 ul.cyclic-list > li:first-child {
     margin-top: 0; /* animate this by 1.5em */
 }
-#codefor {
+#tagline {
     margin-top: 1em;
 }
 textarea {
