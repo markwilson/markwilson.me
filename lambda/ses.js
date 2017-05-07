@@ -63,7 +63,7 @@ exports.handler = function (event, context) {
             context.fail(err);
         } else {
             console.log(data);
-            context.succeed('Thanks for dropping us a line');
+            context.succeed('Thanks for dropping me a line');
         }
     });
 };
