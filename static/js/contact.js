@@ -63,27 +63,27 @@ var ContactForm = {
         if (data.name === '') {
             validSubmission = false;
 
-            this.validationMessages.name = 'Anonymity is declined';
+            this.validationMessages.name = 'Please tell me who you are';
         }
 
         if (data.email === '') {
             validSubmission = false;
 
-            this.validationMessages.email = 'How will I know how to reply?';
+            this.validationMessages.email = 'I need this so I can reply';
         } else {
             var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
             if (!emailRegExp.test(data.email)) {
                 validSubmission = false;
 
-                this.validationMessages.email = 'That is not a valid email address';
+                this.validationMessages.email = 'This is not a valid email address';
             }
         }
 
         if (data.message === '') {
             validSubmission = false;
 
-            this.validationMessages.message = 'Do you have nothing to say?';
+            this.validationMessages.message = 'What would you like to say?';
         }
 
         return validSubmission;
@@ -164,7 +164,7 @@ var ContactForm = {
         $('<p></p>')
             .attr('id', 'success-message')
             .addClass('text-success')
-            .prependTo(this.element)
+            .prependTo(this.element.find('.modal-body'))
             .text('Thank you for your details')
         ;
 

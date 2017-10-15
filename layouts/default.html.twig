@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <title>Mark Wilson - Web developer</title>
+    <title>Mark Wilson - Software Engineer</title>
     <link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/assets/js/contact.js"></script>
 
-    <meta name="keywords" content="web developer, PHP, open source, freelance" />
-    <meta name="description" content="Mark Wilson - Web developer. Will code for you" />
+    <meta name="keywords" content="software engineer, web developer, PHP, open source, freelance" />
+    <meta name="description" content="Mark Wilson - Software Engineer" />
 
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
@@ -29,11 +29,11 @@
 </div>
 
 <div id="contact" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
-    <div class="modal-header">
-        <h3 id="contactLabel">Get in touch</h3>
-    </div>
-    <div class="modal-body">
-        <form class="form-horizontal">
+    <form class="form-horizontal">
+        <div class="modal-header">
+            <h2 id="contactLabel" class="text-center">Get in touch</h2>
+        </div>
+        <div class="modal-body">
             <div class="control-group">
                 <label class="control-label" for="inputName">Name</label>
                 <div class="controls">
@@ -41,27 +41,23 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="inputEmail">Email</label>
+                <label class="control-label" for="inputEmail">E-mail</label>
                 <div class="controls">
-                    <input type="text" name="email" id="inputEmail" placeholder="Email" />
+                    <input type="text" name="email" id="inputEmail" placeholder="E-mail address" />
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputMessage">Message</label>
                 <div class="controls">
-                    <textarea name="message" id="inputMessage" rows="3"></textarea>
+                    <textarea name="message" id="inputMessage" rows="3" placeholder="Message"></textarea>
                 </div>
             </div>
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-    </div>
+        </div>
+        <div class="modal-footer form-actions">
+            <button type="submit" class="btn btn-success">Send message</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </div>
+    </form>
 </div>
 
 <script type="text/javascript">
