@@ -23,7 +23,7 @@ var ContactForm = {
         }
 
         $.ajax({
-            url: 'https://boe3am5nm8.execute-api.eu-west-1.amazonaws.com/prod/get-in-touch',
+            url: 'https://8yad6c8lk7.execute-api.eu-west-1.amazonaws.com/Prod/get-in-touch',
             type: 'POST',
             data: JSON.stringify(formValues),
             contentType: 'application/json; charset=utf-8',
