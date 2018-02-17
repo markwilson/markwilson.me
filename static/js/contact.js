@@ -180,9 +180,3 @@ var ContactForm = {
 $(document).ready(function () {
     ContactForm.initialise('#contact form');
 });
-
-$.ajaxSetup({
-    'headers': {
-        'x-api-key': 'JEfX8zINcP553txx2cnF24kPOzrwRCNw3F32cg7g'
-    }
-});
