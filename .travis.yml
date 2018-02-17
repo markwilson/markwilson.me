@@ -5,9 +5,9 @@ before_script: composer install
 script: php ./build.php
 deploy:
   provider: s3
-  access_key_id: AKIAIV7B7I7FGTILGDRA
+  access_key_id: AKIAJITPCESODBMNJEMQ
   secret_access_key:
-    secure: Cx9MGwc2LQwGUo+lVHM9QP64GmIqsg7ROS5eMhoNMjcef9n9bSKk7oFJi3NHpAiAunIAAi4XMAOSKgV/6TN8gkzwj00DdXWZ5YiGG1mVCoNZhm4NxwKvS8tlNBa9q5SmZpyvU8hPjfZ5apYIUXzAi5b2H4FCLRYIXSFCWNXHxV0=
+    secure: JdYgtngZ9MaL5IwkiBsKtJBqSDvLPEuRkc73KWUy/FSyTQ7sTvYi2/Z8gxSrVkUgFJxcAxSJpKke7ZILia/toJ+AY5R/KOoWNEM6Nc7CmVzhKZWRLmr9HuQT9S7Qa+3iq85nUjHup1P/NKiydxY0gywqAmgOXAiNo5AWdIRwkAY=
   bucket: markwilson.me
   local-dir: public
   acl: public_read
