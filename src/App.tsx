@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Headshot from "./components/Headshot";
 import Biography from "./components/Biography";
+import MessageFormDialog from "./components/MessageFormDialog";
 
 import "./App.css";
 
@@ -23,36 +24,51 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
+  const [messageDialogOpen, setMessageDialogOpen] = useState(false);
+
   const classes = useStyles();
 
+  const onMessageDialogClose = () => {
+    setMessageDialogOpen(false);
+  };
+
   return (
-    <Container maxWidth="md" className={classes.root}>
-      <Grid
-        container
-        spacing={3}
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item md={3}>
-          <Headshot />
-        </Grid>
+    <>
+      <Container maxWidth="md" className={classes.root}>
+        <Grid
+          container
+          spacing={3}
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item md={3}>
+            <Headshot />
+          </Grid>
 
-        <Grid item md={6}>
-          <Biography />
+          <Grid item md={6}>
+            <Biography />
 
-          <div className={classes.contactBtn}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => alert("TODO")}
-            >
-              Message me
-            </Button>
-          </div>
+            <div className={classes.contactBtn}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => setMessageDialogOpen(true)}
+                size="small"
+              >
+                Message me
+              </Button>
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+
+      <MessageFormDialog
+        open={messageDialogOpen}
+        onClose={onMessageDialogClose}
+        triggerClose={() => setMessageDialogOpen(false)}
+      />
+    </>
   );
 }
 

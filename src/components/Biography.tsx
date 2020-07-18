@@ -3,9 +3,12 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     paddingBottom: "2em",
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "center",
+    },
   },
 }));
 
