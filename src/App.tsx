@@ -12,7 +12,7 @@ import "./App.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "3rem",
+    marginTop: "6rem",
   },
   contactBtn: {
     // TODO: this happens at a different time to the grid resize
@@ -50,15 +50,6 @@ function App() {
               Message me
             </Button>
           </div>
-        </Grid>
-
-        <Grid item md={9} xs={12}>
-          <h3>Projects</h3>
-          <ul>
-            <li>
-              <a href="https://weighttracking.app">Weight Tracking app</a>
-            </li>
-          </ul>
         </Grid>
       </Grid>
     </Container>

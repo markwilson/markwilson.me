@@ -23,6 +23,12 @@ theme.typography.h2 = {
   fontSize: "1.6rem",
   fontWeight: 300,
 };
+theme.typography.h3 = {
+  fontSize: "1.3rem",
+  fontWeight: 400,
+  textAlign: "center",
+  marginBottom: "0.5em",
+};
 
 ReactDOM.render(
   <React.StrictMode>

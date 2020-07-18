@@ -14,8 +14,9 @@ const Headshot = () => {
   const classes = useStyles();
 
   return (
+    // TODO: this should use the Image component
     <Avatar
-      src="dummy-portrait.jpg"
+      src="portrait.jpg"
       alt="Headshot of Mark"
       className={classes.headshot}
     />
