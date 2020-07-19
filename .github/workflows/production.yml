@@ -30,4 +30,4 @@ jobs:
           aws-region: eu-west-1
           
       - name: Deploy to S3
-        run: aws s3 sync --delete build s3://markwilson.me/
+        run: aws s3 sync --delete --acl public-read build s3://markwilson.me/
