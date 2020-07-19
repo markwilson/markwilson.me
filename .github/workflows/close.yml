@@ -1,6 +1,8 @@
-name: Delete
+name: PR close
 
-on: [delete]
+on: 
+  pull_request:
+    types: [closed]
 
 jobs:
   delete:
@@ -8,11 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-
-      - name: Get branch name
-        shell: bash
-        run: echo "##[set-output name=name;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: current_branch
 
       - name: Setup node
         uses: actions/setup-node@v1
@@ -24,4 +21,4 @@ jobs:
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: surge teardown --domain ${{ steps.current_branch.outputs.name }}-markwilson.surge.sh
+        run: surge teardown --domain ${{ github.head_ref }}-markwilson.surge.sh
