@@ -55,4 +55,4 @@ jobs:
         run: echo "::set-output name=cloudfront_id::$(terraform output cloudfront_distribution_id)"
 
       - name: Clear CloudFront cache
-        run: echo aws cloudfront create-invalidation --distribution-id ${{ steps.get_cloudfront_distribution_id.outputs.cloudfront_id }} --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id "${{steps.get_cloudfront_distribution_id.outputs.cloudfront_id}}" --paths '"/*"'
