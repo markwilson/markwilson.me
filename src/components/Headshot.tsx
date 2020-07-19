@@ -1,21 +1,21 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
+import Image from "material-ui-image";
 
 const useStyles = makeStyles(() => ({
   headshot: {
-    width: 200,
-    height: 200,
+    borderRadius: "50%",
   },
 }));
 
 const Headshot = () => {
   const classes = useStyles();
 
-  // TODO: this should use the Image component
   return (
-    <Avatar
+    <Image
+      color="transparent"
+      style={{width: 200, height: 200, paddingTop: 200}}
       src="portrait.jpg"
       alt="Headshot of Mark"
       className={classes.headshot}

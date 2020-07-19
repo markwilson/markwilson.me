@@ -3,5 +3,9 @@ module.exports = function override(config, env) {
     return !["ManifestPlugin", "GenerateSW"].includes(plugin.constructor.name);
   });
 
+  config.entry = {
+    loader: "./src/loader.tsx",
+  };
+
   return config;
 };
