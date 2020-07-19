@@ -14,14 +14,15 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "react-app-rewired": "^2.1.6",
     "react-scripts": "3.4.1",
     "surge": "^0.21.6",
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start --script-version react-script-ts",
+    "build": "react-app-rewired build --script-version react-script-ts",
+    "eject": "react-app-rewired eject --script-version react-script-ts"
   },
   "eslintConfig": {
     "extends": "react-app"
