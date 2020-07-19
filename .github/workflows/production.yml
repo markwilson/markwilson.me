@@ -50,6 +50,7 @@ jobs:
         run: aws s3 sync --delete --acl public-read build s3://markwilson.me/
 
       - name: Get CloudFront distribution ID
+        shell: bash
         id: get_cloudfront_distribution_id
         run: echo "::set-output name=id::${terraform output cloudfront_distribution_id}"
 
