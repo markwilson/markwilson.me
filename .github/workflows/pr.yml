@@ -1,0 +1,31 @@
+name: Deploy to surge.sh
+
+on: [pull_request]
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Get branch name
+        shell: bash
+        run: echo "##[set-output name=name;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: current_branch
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Create production-ready build
+        run: yarn build
+
+      - name: Surge build
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: $(yarn bin surge) build --domain ${{ steps.current_branch.outputs.name }}-markwilson.surge.sh

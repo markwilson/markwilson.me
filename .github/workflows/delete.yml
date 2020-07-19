@@ -1,0 +1,27 @@
+name: Delete
+
+on: [delete]
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Get branch name
+        shell: bash
+        run: echo "##[set-output name=name;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: current_branch
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+
+      - name: Install surge
+        run: yarn global add surge
+
+      - name: Surge teardown
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: surge teardown --domain ${{ steps.current_branch.outputs.name }}-markwilson.surge.sh
