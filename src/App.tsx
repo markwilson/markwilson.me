@@ -52,7 +52,7 @@ function App() {
             <Biography />
 
             <div className={classes.buttonContainer}>
-              <Button
+              {/* <Button
                 className={classes.contactBtn}
                 variant="contained"
                 color="primary"
@@ -62,7 +62,7 @@ function App() {
                 disableElevation
               >
                 Message me
-              </Button>
+              </Button> */}
               <Button
                 variant="contained"
                 href="https://github.com/markwilson"
