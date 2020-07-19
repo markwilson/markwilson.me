@@ -1,0 +1,24 @@
+name: PR close
+
+on: 
+  pull_request:
+    types: [closed]
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+
+      - name: Install surge
+        run: yarn global add surge
+
+      - name: Surge teardown
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: surge teardown --domain ${{ github.head_ref }}-markwilson.surge.sh

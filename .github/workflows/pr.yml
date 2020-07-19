@@ -1,0 +1,28 @@
+name: Deploy to surge.sh
+
+on: 
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Create production-ready build
+        run: yarn build
+
+      - name: Surge build
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: $(yarn bin surge) build --domain ${{ github.head_ref }}-markwilson.surge.sh
