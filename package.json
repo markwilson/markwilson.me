@@ -14,6 +14,7 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "react-app-rewire-multiple-entry": "^2.2.0",
     "react-app-rewired": "^2.1.6",
     "react-scripts": "3.4.1",
     "surge": "^0.21.6",
