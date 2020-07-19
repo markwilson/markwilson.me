@@ -14,11 +14,11 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
 
-      - name: Install surge
-        run: yarn global add surge
+      - name: Install dependencies
+        run: yarn install
 
       - name: Surge teardown
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: $(yarn global bin surge) teardown --domain ${{ github.head_ref }}-markwilson.surge.sh
+        run: $(yarn bin surge) teardown --domain ${{ github.head_ref }}-markwilson.surge.sh
