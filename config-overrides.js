@@ -1,11 +1,23 @@
-module.exports = function override(config, env) {
-  config.plugins = config.plugins.filter((plugin) => {
-    return !["ManifestPlugin", "GenerateSW"].includes(plugin.constructor.name);
-  });
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-  config.entry = {
-    loader: "./src/loader.tsx",
-  };
+const multipleEntry = require("react-app-rewire-multiple-entry")([
+  {
+    entry: "src/404.tsx",
+    template: "public/404.html",
+    outPath: "/404.html",
+  },
+]);
 
-  return config;
+module.exports = {
+  webpack: (config, env) => {
+    config.plugins = config.plugins.filter((plugin) => {
+      return !["ManifestPlugin", "GenerateSW"].includes(
+        plugin.constructor.name
+      );
+    });
+
+    multipleEntry.addMultiEntry(config);
+
+    return config;
+  },
 };
