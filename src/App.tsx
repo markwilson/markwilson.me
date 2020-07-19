@@ -15,11 +15,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: "6rem",
   },
-  contactBtn: {
-    // TODO: this happens at a different time to the grid resize
+  buttonContainer: {
     [theme.breakpoints.down("xs")]: {
       textAlign: "center",
     },
+  },
+  contactBtn: {
+    marginRight: theme.spacing(2),
   },
 }));
 
@@ -49,14 +51,26 @@ function App() {
           <Grid item md={6}>
             <Biography />
 
-            <div className={classes.contactBtn}>
+            <div className={classes.buttonContainer}>
               <Button
+                className={classes.contactBtn}
                 variant="contained"
                 color="primary"
                 onClick={() => setMessageDialogOpen(true)}
                 size="small"
+                disableRipple
+                disableElevation
               >
                 Message me
+              </Button>
+              <Button
+                variant="contained"
+                href="https://github.com/markwilson"
+                size="small"
+                disableRipple
+                disableElevation
+              >
+                GitHub: markwilson
               </Button>
             </div>
           </Grid>

@@ -13,8 +13,8 @@ const useStyles = makeStyles(() => ({
 const Headshot = () => {
   const classes = useStyles();
 
+  // TODO: this should use the Image component
   return (
-    // TODO: this should use the Image component
     <Avatar
       src="portrait.jpg"
       alt="Headshot of Mark"
