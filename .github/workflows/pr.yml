@@ -1,6 +1,6 @@
 name: Deploy to surge.sh
 
-on: 
+on:
   pull_request:
     types: [opened, edited, reopened, synchronize]
 
@@ -26,3 +26,16 @@ jobs:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: $(yarn bin surge) build --domain ${{ github.head_ref }}-markwilson.surge.sh
+
+      - name: Comment on PR
+        if: github.event.action == 'opened'
+        uses: actions/github-script@v2
+        with:
+          github-token: ${{secrets.GH_ACCESS_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '[${{ github.head_ref }}-markwilson.surge.sh](https://${{ github.head_ref }}-markwilson.surge.sh)'
+            })
