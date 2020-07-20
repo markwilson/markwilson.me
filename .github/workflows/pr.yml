@@ -28,6 +28,7 @@ jobs:
         run: $(yarn bin surge) build --domain ${{ github.head_ref }}-markwilson.surge.sh
 
       - name: Comment on PR
+        if: github.event.action == 'opened'
         uses: actions/github-script@v2
         with:
           github-token: ${{secrets.GH_ACCESS_TOKEN}}
