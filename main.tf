@@ -58,6 +58,13 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       restriction_type = "none"
     }
   }
+
+  custom_error_response {
+    error_caching_min_ttl = 60
+    error_code            = 403
+    response_code         = 404
+    response_page_path    = "/404.html"
+  }
 }
 
 resource "aws_route53_record" "site" {
