@@ -49,5 +49,12 @@ jobs:
       - name: Deploy to S3
         run: aws s3 sync --delete --acl public-read build s3://markwilson.me/
 
-      # - name: Clear CloudFront cache
-      #   run: aws cloudfront create-invalidation --distribution-id ${terraform output cloudfront_distribution_id} --paths "/*"
+      - name: Get CloudFront distribution ID
+        shell: bash
+        id: cloudfront
+        run: |
+          CLOUDFRONT_DISTRIBUTION_ID=$(terraform output -json cloudfront_distribution_id)
+          echo -n "${CLOUDFRONT_DISTRIBUTION_ID//$'%0A'/}"
+
+      - name: Clear CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id "${{ steps.cloudfront.outputs.stdout }}" --paths "/*"
