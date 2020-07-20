@@ -14,14 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      # - name: Setup node
-      #   uses: actions/setup-node@v1
+      - name: Setup node
+        uses: actions/setup-node@v1
 
-      # - name: Install dependencies
-      #   run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
-      # - name: Create production-ready build
-      #   run: yarn build
+      - name: Create production-ready build
+        run: yarn build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -41,19 +41,21 @@ jobs:
       - name: Validate Terraform
         run: terraform validate
 
-      # - name: Terraform Plan
-      #   run: terraform plan
+      - name: Terraform Plan
+        run: terraform plan
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
 
-      # - name: Deploy to S3
-      #   run: aws s3 sync --delete --acl public-read build s3://markwilson.me/
+      - name: Deploy to S3
+        run: aws s3 sync --delete --acl public-read build s3://markwilson.me/
 
       - name: Get CloudFront distribution ID
-        id: get_cloudfront_distribution_id
         shell: bash
-        run: echo "::set-output name=cloudfront_id::$(terraform output cloudfront_distribution_id)"
+        id: cloudfront
+        run: |
+          CLOUDFRONT_DISTRIBUTION_ID=$(terraform output -json cloudfront_distribution_id)
+          echo -n "${CLOUDFRONT_DISTRIBUTION_ID//$'%0A'/}"
 
       - name: Clear CloudFront cache
-        run: aws cloudfront create-invalidation --distribution-id "${{ steps.get_cloudfront_distribution_id.outputs.cloudfront_id }}" --paths '"/*"'
+        run: aws cloudfront create-invalidation --distribution-id "${{ steps.cloudfront.outputs.stdout }}" --paths "/*"
