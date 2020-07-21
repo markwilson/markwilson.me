@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Headshot from "./components/Headshot";
@@ -13,7 +14,17 @@ import "./App.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "6rem",
+    marginTop: theme.spacing(12),
+    marginBottom: theme.spacing(4),
+    textAlign: "center",
+  },
+  paper: {
+    display: "inline-block",
+    paddingLeft: theme.spacing(8),
+    paddingRight: theme.spacing(8),
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+    textAlign: "left",
   },
   buttonContainer: {
     [theme.breakpoints.down("xs")]: {
@@ -36,23 +47,24 @@ function App() {
 
   return (
     <>
-      <Container maxWidth="md" className={classes.root}>
-        <Grid
-          container
-          spacing={3}
-          direction="row"
-          justify="center"
-          alignItems="center"
-        >
-          <Grid item md={3}>
-            <Headshot />
-          </Grid>
+      <Container className={classes.root}>
+        <Paper className={classes.paper}>
+          <Grid
+            container
+            spacing={4}
+            direction="row"
+            justify="center"
+            alignItems="center"
+          >
+            <Grid item>
+              <Headshot />
+            </Grid>
 
-          <Grid item md={6}>
-            <Biography />
+            <Grid item>
+              <Biography />
 
-            <div className={classes.buttonContainer}>
-              {/* <Button
+              <div className={classes.buttonContainer}>
+                {/* <Button
                 className={classes.contactBtn}
                 variant="contained"
                 color="primary"
@@ -63,18 +75,19 @@ function App() {
               >
                 Message me
               </Button> */}
-              <Button
-                variant="contained"
-                href="https://github.com/markwilson"
-                size="small"
-                disableRipple
-                disableElevation
-              >
-                GitHub: markwilson
-              </Button>
-            </div>
+                <Button
+                  variant="contained"
+                  href="https://github.com/markwilson"
+                  size="small"
+                  disableRipple
+                  disableElevation
+                >
+                  GitHub: markwilson
+                </Button>
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
+        </Paper>
       </Container>
 
       <MessageFormDialog
