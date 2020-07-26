@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   contactBtn: {
     marginRight: theme.spacing(2),
+    display: "none",
   },
 }));
 
