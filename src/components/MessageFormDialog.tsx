@@ -2,6 +2,7 @@ import React, {
   MouseEvent,
   MouseEventHandler,
   ChangeEvent,
+  FocusEvent,
   FormEvent,
   useState,
 } from "react";
@@ -20,9 +21,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AxiosResponse } from "axios";
 
 export interface FormData {
-  name: string;
-  email: string;
-  message: string;
+  name: string | null;
+  email: string | null;
+  message: string | null;
 }
 
 interface MessageFormDialogProps {
@@ -55,9 +56,9 @@ const MessageFormDialog = ({
   triggerSend,
 }: MessageFormDialogProps) => {
   const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
+    name: null,
+    email: null,
+    message: null,
   });
 
   const [error, setError] = useState<string | null>(null);
@@ -66,12 +67,23 @@ const MessageFormDialog = ({
 
   const classes = useStyles();
 
-  const createOnChangeHandler = (fieldName: string) => {
+  const createOnChangeHandler = (fieldName: keyof FormData) => {
     return (event: ChangeEvent<HTMLInputElement>) => {
       setFormData({
         ...formData,
         [fieldName]: event.target.value,
-      } as FormData);
+      });
+    };
+  };
+
+  const createOnFocusHandler = (fieldName: keyof FormData) => {
+    return (event: FocusEvent<HTMLInputElement>) => {
+      if (formData[fieldName] === null) {
+        setFormData({
+          ...formData,
+          [fieldName]: "",
+        });
+      }
     };
   };
 
@@ -83,9 +95,9 @@ const MessageFormDialog = ({
         setIsSending(false);
         setSent(false);
         setFormData({
-          name: "",
-          email: "",
-          message: "",
+          name: null,
+          email: null,
+          message: null,
         });
       }, 500);
     }, 500);
@@ -144,7 +156,9 @@ const MessageFormDialog = ({
                   type="text"
                   fullWidth
                   onChange={createOnChangeHandler("name")}
+                  onFocus={createOnFocusHandler("name")}
                   disabled={isSending}
+                  error={formData.name !== null && !formData.name}
                 />
                 <TextField
                   variant="outlined"
@@ -153,7 +167,15 @@ const MessageFormDialog = ({
                   type="email"
                   fullWidth
                   onChange={createOnChangeHandler("email")}
+                  onFocus={createOnFocusHandler("email")}
                   disabled={isSending}
+                  error={
+                    formData.email !== null &&
+                    (!formData.email ||
+                      !formData.email.match(
+                        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+                      ))
+                  }
                 />
                 <TextField
                   variant="outlined"
@@ -163,7 +185,9 @@ const MessageFormDialog = ({
                   rowsMax={4}
                   fullWidth
                   onChange={createOnChangeHandler("message")}
+                  onFocus={createOnFocusHandler("message")}
                   disabled={isSending}
+                  error={formData.message !== null && !formData.message}
                 />
               </DialogContentText>
             </DialogContent>
