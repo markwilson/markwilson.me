@@ -112,6 +112,14 @@ const MessageFormDialog = ({
     ""
   );
 
+  const validName = !!formData.name;
+  const validEmail =
+    formData.email &&
+    formData.email.match(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    );
+  const validMessage = !!formData.message;
+
   return (
     <Dialog
       className={classes.root}
@@ -129,7 +137,7 @@ const MessageFormDialog = ({
       <form
         onSubmit={(e: FormEvent) => {
           e.preventDefault();
-          if (isSending) {
+          if (isSending || !validName || !validMessage || !validEmail) {
             return;
           }
 
@@ -156,7 +164,7 @@ const MessageFormDialog = ({
                   onChange={createOnChangeHandler("name")}
                   onFocus={createOnFocusHandler("name")}
                   disabled={isSending}
-                  error={formData.name !== null && !formData.name}
+                  error={formData.name !== null && !validName}
                 />
                 <TextField
                   variant="outlined"
@@ -167,13 +175,7 @@ const MessageFormDialog = ({
                   onChange={createOnChangeHandler("email")}
                   onFocus={createOnFocusHandler("email")}
                   disabled={isSending}
-                  error={
-                    formData.email !== null &&
-                    (!formData.email ||
-                      !formData.email.match(
-                        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-                      ))
-                  }
+                  error={formData.email !== null && !validEmail}
                 />
                 <TextField
                   variant="outlined"
@@ -185,7 +187,7 @@ const MessageFormDialog = ({
                   onChange={createOnChangeHandler("message")}
                   onFocus={createOnFocusHandler("message")}
                   disabled={isSending}
-                  error={formData.message !== null && !formData.message}
+                  error={formData.message !== null && !validMessage}
                 />
               </DialogContentText>
             </DialogContent>
@@ -206,7 +208,9 @@ const MessageFormDialog = ({
                 disableRipple
                 disableElevation
                 type="submit"
-                disabled={isSending}
+                disabled={
+                  isSending || !validName || !validMessage || !validEmail
+                }
               >
                 Send
               </Button>
