@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   contactBtn: {
-    marginRight: theme.spacing(2),
+    margin: theme.spacing(1),
   },
 }));
 
