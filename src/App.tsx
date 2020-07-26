@@ -8,9 +8,17 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Headshot from "./components/Headshot";
 import Biography from "./components/Biography";
-import MessageFormDialog from "./components/MessageFormDialog";
+import MessageFormDialog, { FormData } from "./components/MessageFormDialog";
+
+import axios from "axios";
 
 import "./App.css";
+
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,17 +72,17 @@ function App() {
               <Biography />
 
               <div className={classes.buttonContainer}>
-                {/* <Button
-                className={classes.contactBtn}
-                variant="contained"
-                color="primary"
-                onClick={() => setMessageDialogOpen(true)}
-                size="small"
-                disableRipple
-                disableElevation
-              >
-                Message me
-              </Button> */}
+                <Button
+                  className={classes.contactBtn}
+                  variant="contained"
+                  color="primary"
+                  onClick={() => setMessageDialogOpen(true)}
+                  size="small"
+                  disableRipple
+                  disableElevation
+                >
+                  Message me
+                </Button>
                 <Button
                   variant="contained"
                   href="https://github.com/markwilson"
@@ -94,6 +102,29 @@ function App() {
         open={messageDialogOpen}
         onClose={onMessageDialogClose}
         triggerClose={() => setMessageDialogOpen(false)}
+        triggerSend={(formData: FormData) => {
+          window.grecaptcha.ready(() => {
+            window.grecaptcha
+              // TODO: move this to environment variable
+              .execute("6LdHF7YZAAAAACz4OTPzk2pIL0DinVK36DuTcBf_", {
+                action: "submit",
+              })
+              .then((token: string) => {
+                axios
+                  // TODO: get the URL from environment data
+                  .post("http://localhost:3001/", {
+                    token,
+                    formData,
+                  })
+                  .then(() => {
+                    // TODO: handle successful send
+                  })
+                  .catch((error) => {
+                    // TODO: show the error message: error.toString()
+                  });
+              });
+          });
+        }}
       />
     </>
   );
