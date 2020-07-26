@@ -18,8 +18,6 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { AxiosResponse } from "axios";
-
 export interface FormData {
   name: string | null;
   email: string | null;
@@ -32,7 +30,7 @@ interface MessageFormDialogProps {
   triggerClose: () => void;
   triggerSend: (
     data: FormData,
-    onError: (errorResponse: AxiosResponse) => void,
+    onError: (message: string) => void,
     onSuccess: () => void
   ) => void;
 }
@@ -103,8 +101,8 @@ const MessageFormDialog = ({
     }, 500);
   };
 
-  const onError = (errorResponse: AxiosResponse) => {
-    setError(errorResponse.data);
+  const onError = (message: string) => {
+    setError(message);
     setIsSending(false);
   };
 

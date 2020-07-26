@@ -20,6 +20,9 @@ jobs:
 
       - name: Create production-ready build
         run: yarn build
+        env:
+          # This means the messages can't be tested from a PR on Surge
+          REACT_APP_SEND_MESSAGE_URL: "http://localhost:3001/"
 
       - name: Surge build
         env:

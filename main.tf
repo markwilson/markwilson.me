@@ -1,3 +1,11 @@
+variable "recaptcha_secret" {
+  type = string
+}
+
+variable "send_to" {
+  type = string
+}
+
 provider "aws" {
   region = "eu-west-1"
 }
@@ -79,6 +87,80 @@ resource "aws_route53_record" "site" {
   }
 }
 
+data "aws_iam_policy_document" "AWSLambdaTrustPolicy" {
+  statement {
+    actions = ["sts:AssumeRole"]
+    effect  = "Allow"
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_role" "lambda_iam" {
+  name               = "sendmessage"
+  assume_role_policy = data.aws_iam_policy_document.AWSLambdaTrustPolicy.json
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_policy" {
+  role       = aws_iam_role.lambda_iam.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_iam_role_policy_attachment" "ses_policy" {
+  role       = aws_iam_role.lambda_iam.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSESFullAccess"
+}
+
+resource "aws_lambda_function" "send_message_function" {
+  filename      = "send_message.zip"
+  function_name = "send_message"
+  role          = aws_iam_role.lambda_iam.arn
+  handler       = "index.handler"
+
+  source_code_hash = filebase64sha256("send_message.zip")
+
+  runtime = "nodejs12.x"
+  timeout = 10
+
+  environment {
+    variables = {
+      # TODO: configure CORS better, it's currently open to all
+      "INCLUDE_CORS_HEADERS" = "true"
+      "SCORE_THRESHOLD"      = "0.5"
+
+      "RECAPTCHA_SECRET" = var.recaptcha_secret
+      "SEND_TO"          = var.send_to
+    }
+  }
+}
+
+resource "aws_apigatewayv2_api" "send_message_api" {
+  name          = "send_message"
+  protocol_type = "HTTP"
+
+  target    = aws_lambda_function.send_message_function.arn
+  route_key = "POST /"
+
+  cors_configuration {
+    allow_headers = ["*"]
+    allow_methods = [
+      "OPTIONS",
+      "POST",
+    ]
+    allow_origins = ["*"]
+  }
+}
+
+resource "aws_lambda_permission" "api_gateway" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.send_message_function.arn
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.send_message_api.execution_arn}/*/*"
+}
+
 terraform {
   backend "s3" {
     bucket = "terraform.markwilson.me"
@@ -89,4 +171,8 @@ terraform {
 
 output "cloudfront_distribution_id" {
   value = aws_cloudfront_distribution.s3_distribution.id
+}
+
+output "api_domain" {
+  value = aws_apigatewayv2_api.send_message_api.api_endpoint
 }

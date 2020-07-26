@@ -19,8 +19,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Create production-ready build
-        run: yarn build
+      - name: Install send message dependencies
+        run: yarn install
+        working-directory: ./sendMessage
+
+      - name: Package send message function
+        run: zip -r ../send_message.zip .
+        working-directory: ./sendMessage
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -41,10 +46,22 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
+
+      - name: Get API Gateway domain
+        shell: bash
+        id: api
+        run: |
+          API_GATEWAY_DOMAIN=$(terraform output -json api_domain)
+          echo -n "${API_GATEWAY_ID//$'%0A'/}"
+
+      - name: Create production-ready build
+        run: yarn build
+        env:
+          REACT_APP_SEND_MESSAGE_URL: ${{ steps.api.output.stdout }}
 
       - name: Deploy to S3
         run: aws s3 sync --delete --acl public-read build s3://markwilson.me/

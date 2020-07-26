@@ -111,7 +111,7 @@ const sendEmail = ({ name, email, message }) => {
 };
 
 const validFormData = (formData) => {
-  if (!formData.name || !formData.email || !formData.message) {
+  if (!formData || !formData.name || !formData.email || !formData.message) {
     return false;
   }
 

@@ -10,7 +10,7 @@ import Headshot from "./components/Headshot";
 import Biography from "./components/Biography";
 import MessageFormDialog, { FormData } from "./components/MessageFormDialog";
 
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError } from "axios";
 
 import "./App.css";
 
@@ -104,7 +104,7 @@ function App() {
         triggerClose={() => setMessageDialogOpen(false)}
         triggerSend={(
           formData: FormData,
-          onError: (errorResponse: AxiosResponse) => void,
+          onError: (message: string) => void,
           onSuccess: () => void,
         ) => {
           window.grecaptcha.ready(() => {
@@ -115,8 +115,7 @@ function App() {
               })
               .then((token: string) => {
                 axios
-                  // TODO: get the URL from environment data
-                  .post("http://localhost:3001/", {
+                  .post(process.env.REACT_APP_SEND_MESSAGE_URL!, {
                     token,
                     formData,
                   })
@@ -125,10 +124,11 @@ function App() {
                   })
                   .catch((error: AxiosError) => {
                     if (!error.response) {
+                      onError(error.toString())
                       throw error;
                     }
 
-                    onError(error.response);
+                    onError(error.response.data);
                   });
               });
           });
