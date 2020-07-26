@@ -54,7 +54,7 @@ jobs:
 
       - name: Get API Gateway domain
         run: |
-          echo "::set-env name=REACT_APP_SEND_MESSAGE_URL=::$(terraform output -json api_domain)"
+          echo "::set-env name=REACT_APP_SEND_MESSAGE_URL=::$(terraform output api_domain)"
 
       - name: Create production-ready build
         run: yarn build
