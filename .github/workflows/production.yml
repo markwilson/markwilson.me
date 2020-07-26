@@ -23,9 +23,13 @@ jobs:
         run: yarn install
         working-directory: ./sendMessage
 
-      - name: Package send message function
-        run: zip -r ../send_message.zip .
+      - name: Build send message function
+        run: yarn run build
         working-directory: ./sendMessage
+
+      - name: Package send message function
+        run: zip -r ../../send_message.zip .
+        working-directory: ./sendMessage/build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1

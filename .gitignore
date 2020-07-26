@@ -3,3 +3,4 @@
 /build
 /.terraform
 /send_message.zip
+/sendMessage/build
