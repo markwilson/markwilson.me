@@ -16,17 +16,23 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 
-interface MessageFormDialogProps {
-  open: boolean;
-  onClose: MouseEventHandler;
-  triggerClose: () => void;
-  triggerSend: (data: { name: string; email: string; message: string }) => void;
-}
+import { AxiosResponse } from "axios";
 
 export interface FormData {
   name: string;
   email: string;
   message: string;
+}
+
+interface MessageFormDialogProps {
+  open: boolean;
+  onClose: MouseEventHandler;
+  triggerClose: () => void;
+  triggerSend: (
+    data: FormData,
+    onError: (errorResponse: AxiosResponse) => void,
+    onSuccess: () => void
+  ) => void;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -47,11 +53,13 @@ const MessageFormDialog = ({
   triggerClose,
   triggerSend,
 }: MessageFormDialogProps) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
-  }) as [FormData, (arg0: FormData) => void];
+  });
+
+  const [error, setError] = useState<string | null>(null);
 
   const classes = useStyles();
 
@@ -64,6 +72,16 @@ const MessageFormDialog = ({
     };
   };
 
+  const showError = (errorResponse: AxiosResponse) => {
+    setError(errorResponse.data);
+  };
+
+  const errorEl = error ? (
+    <DialogContentText>{error}</DialogContentText>
+  ) : (
+    ""
+  );
+
   return (
     <Dialog
       className={classes.root}
@@ -74,13 +92,14 @@ const MessageFormDialog = ({
       <form
         onSubmit={(e: FormEvent) => {
           e.preventDefault();
-          triggerSend(formData);
+          triggerSend(formData, showError, triggerClose);
         }}
       >
         <DialogTitle id="simple-dialog-title">
           Send a message to Mark
         </DialogTitle>
         <DialogContent>
+          {errorEl}
           <DialogContentText>
             <TextField
               variant="outlined"
