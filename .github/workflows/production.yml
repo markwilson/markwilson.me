@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - send-message
 
 jobs:
   push:
