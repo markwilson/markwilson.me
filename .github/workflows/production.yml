@@ -52,13 +52,9 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
-
-      - name: Get API Gateway domain
-        run: |
-          echo "::set-env name=REACT_APP_SEND_MESSAGE_URL::$(terraform output api_domain)"
-
+        
       - name: Create production-ready build
-        run: yarn build
+        run: REACT_APP_SEND_MESSAGE_URL=$(terraform output api_domain) yarn build
 
       - name: Deploy to S3
         run: aws s3 sync --delete --acl public-read build s3://markwilson.me/
