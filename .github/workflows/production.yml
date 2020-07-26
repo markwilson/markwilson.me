@@ -53,7 +53,6 @@ jobs:
         run: terraform apply -auto-approve -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
 
       - name: Get API Gateway domain
-        shell: bash
         run: |
           echo "::set-env name=REACT_APP_SEND_MESSAGE_URL=::$(terraform output -json api_domain)"
 
