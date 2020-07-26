@@ -1,4 +1,5 @@
 import React, {
+  MouseEvent,
   MouseEventHandler,
   ChangeEvent,
   FormEvent,
@@ -60,6 +61,8 @@ const MessageFormDialog = ({
   });
 
   const [error, setError] = useState<string | null>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const classes = useStyles();
 
@@ -72,12 +75,29 @@ const MessageFormDialog = ({
     };
   };
 
-  const showError = (errorResponse: AxiosResponse) => {
+  const onSuccess = () => {
+    setSent(true);
+    setTimeout(() => {
+      triggerClose();
+      setTimeout(() => {
+        setIsSending(false);
+        setSent(false);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      }, 500);
+    }, 500);
+  };
+
+  const onError = (errorResponse: AxiosResponse) => {
     setError(errorResponse.data);
+    setIsSending(false);
   };
 
   const errorEl = error ? (
-    <DialogContentText>{error}</DialogContentText>
+    <DialogContentText color="error">{error}</DialogContentText>
   ) : (
     ""
   );
@@ -85,83 +105,111 @@ const MessageFormDialog = ({
   return (
     <Dialog
       className={classes.root}
-      onClose={onClose}
+      onClose={(e: MouseEvent) => {
+        if (isSending) {
+          return;
+        }
+
+        setError(null);
+        onClose(e);
+      }}
       aria-labelledby="simple-dialog-title"
       open={open}
     >
       <form
         onSubmit={(e: FormEvent) => {
           e.preventDefault();
-          triggerSend(formData, showError, triggerClose);
+          if (isSending) {
+            return;
+          }
+
+          setError(null);
+          setIsSending(true);
+          triggerSend(formData, onError, onSuccess);
         }}
       >
         <DialogTitle id="simple-dialog-title">
-          Send a message to Mark
+          {sent ? "Message sent!" : "Send a message to Mark"}
         </DialogTitle>
-        <DialogContent>
-          {errorEl}
-          <DialogContentText>
-            <TextField
-              variant="outlined"
-              color="secondary"
-              autoFocus
-              label="Name"
-              type="text"
-              fullWidth
-              onChange={createOnChangeHandler("name")}
-            />
-            <TextField
-              variant="outlined"
-              color="secondary"
-              label="Email address"
-              type="email"
-              fullWidth
-              onChange={createOnChangeHandler("email")}
-            />
-            <TextField
-              variant="outlined"
-              color="secondary"
-              multiline
-              label="Message"
-              rowsMax={4}
-              fullWidth
-              onChange={createOnChangeHandler("message")}
-            />
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            size="small"
-            disableRipple
-            disableElevation
-            onClick={() => triggerClose()}
-            variant="contained"
-          >
-            Cancel
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            disableRipple
-            disableElevation
-            type="submit"
-          >
-            Send
-          </Button>
-        </DialogActions>
-        <DialogContent className={classes.ts_and_cs}>
-          <DialogContentText variant="caption">
-            This site is protected by reCAPTCHA and the Google{" "}
-            <Link href="https://policies.google.com/privacy" color="secondary">
-              Privacy Policy
-            </Link>{" "}
-            and{" "}
-            <Link href="https://policies.google.com/terms" color="secondary">
-              Terms of Service
-            </Link>{" "}
-            apply.
-          </DialogContentText>
-        </DialogContent>
+        {!sent && (
+          <>
+            <DialogContent>
+              {errorEl}
+              <DialogContentText>
+                <TextField
+                  variant="outlined"
+                  color="secondary"
+                  autoFocus
+                  label="Name"
+                  type="text"
+                  fullWidth
+                  onChange={createOnChangeHandler("name")}
+                  disabled={isSending}
+                />
+                <TextField
+                  variant="outlined"
+                  color="secondary"
+                  label="Email address"
+                  type="email"
+                  fullWidth
+                  onChange={createOnChangeHandler("email")}
+                  disabled={isSending}
+                />
+                <TextField
+                  variant="outlined"
+                  color="secondary"
+                  multiline
+                  label="Message"
+                  rowsMax={4}
+                  fullWidth
+                  onChange={createOnChangeHandler("message")}
+                  disabled={isSending}
+                />
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                size="small"
+                disableRipple
+                disableElevation
+                onClick={() => triggerClose()}
+                variant="contained"
+                disabled={isSending}
+              >
+                Cancel
+              </Button>
+              <Button
+                color="primary"
+                variant="contained"
+                disableRipple
+                disableElevation
+                type="submit"
+                disabled={isSending}
+              >
+                Send
+              </Button>
+            </DialogActions>
+            <DialogContent className={classes.ts_and_cs}>
+              <DialogContentText variant="caption">
+                This site is protected by reCAPTCHA and the Google{" "}
+                <Link
+                  href="https://policies.google.com/privacy"
+                  color="secondary"
+                >
+                  Privacy Policy
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="https://policies.google.com/terms"
+                  color="secondary"
+                >
+                  Terms of Service
+                </Link>{" "}
+                apply.
+              </DialogContentText>
+            </DialogContent>
+          </>
+        )}
       </form>
     </Dialog>
   );
