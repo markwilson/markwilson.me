@@ -8,9 +8,17 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Headshot from "./components/Headshot";
 import Biography from "./components/Biography";
-import MessageFormDialog from "./components/MessageFormDialog";
+import MessageFormDialog, { FormData } from "./components/MessageFormDialog";
+
+import axios, { AxiosError } from "axios";
 
 import "./App.css";
+
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,17 +72,17 @@ function App() {
               <Biography />
 
               <div className={classes.buttonContainer}>
-                {/* <Button
-                className={classes.contactBtn}
-                variant="contained"
-                color="primary"
-                onClick={() => setMessageDialogOpen(true)}
-                size="small"
-                disableRipple
-                disableElevation
-              >
-                Message me
-              </Button> */}
+                <Button
+                  className={classes.contactBtn}
+                  variant="contained"
+                  color="primary"
+                  onClick={() => setMessageDialogOpen(true)}
+                  size="small"
+                  disableRipple
+                  disableElevation
+                >
+                  Message me
+                </Button>
                 <Button
                   variant="contained"
                   href="https://github.com/markwilson"
@@ -94,6 +102,37 @@ function App() {
         open={messageDialogOpen}
         onClose={onMessageDialogClose}
         triggerClose={() => setMessageDialogOpen(false)}
+        triggerSend={(
+          formData: FormData,
+          onError: (message: string) => void,
+          onSuccess: () => void,
+        ) => {
+          window.grecaptcha.ready(() => {
+            window.grecaptcha
+              // TODO: move this to environment variable
+              .execute("6LdHF7YZAAAAACz4OTPzk2pIL0DinVK36DuTcBf_", {
+                action: "submit",
+              })
+              .then((token: string) => {
+                axios
+                  .post(process.env.REACT_APP_SEND_MESSAGE_URL!, {
+                    token,
+                    formData,
+                  })
+                  .then(() => {
+                    onSuccess();
+                  })
+                  .catch((error: AxiosError) => {
+                    if (!error.response) {
+                      onError(error.toString())
+                      throw error;
+                    }
+
+                    onError(error.response.data);
+                  });
+              });
+          });
+        }}
       />
     </>
   );

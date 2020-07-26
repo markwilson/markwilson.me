@@ -9,6 +9,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "axios": "^0.19.2",
     "material-ui-image": "^3.2.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -21,7 +22,7 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-app-rewired start --script-version react-script-ts",
+    "start": "REACT_APP_SEND_MESSAGE_URL=http://localhost:3001 react-app-rewired start --script-version react-script-ts",
     "build": "react-app-rewired build --script-version react-script-ts",
     "eject": "react-app-rewired eject --script-version react-script-ts"
   },

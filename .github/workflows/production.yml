@@ -19,8 +19,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Create production-ready build
-        run: yarn build
+      - name: Install send message dependencies
+        run: yarn install
+        working-directory: ./sendMessage
+
+      - name: Package send message function
+        run: zip -r ../send_message.zip .
+        working-directory: ./sendMessage
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -33,6 +38,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 0.12.26
+          terraform_wrapper: false
 
       - name: Initialise Terraform
         run: terraform init
@@ -41,20 +47,16 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
+
+      - name: Create production-ready build
+        run: REACT_APP_SEND_MESSAGE_URL=$(terraform output api_domain) yarn build
 
       - name: Deploy to S3
         run: aws s3 sync --delete --acl public-read build s3://markwilson.me/
 
-      - name: Get CloudFront distribution ID
-        shell: bash
-        id: cloudfront
-        run: |
-          CLOUDFRONT_DISTRIBUTION_ID=$(terraform output -json cloudfront_distribution_id)
-          echo -n "${CLOUDFRONT_DISTRIBUTION_ID//$'%0A'/}"
-
       - name: Clear CloudFront cache
-        run: aws cloudfront create-invalidation --distribution-id "${{ steps.cloudfront.outputs.stdout }}" --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id "$(terraform output cloudfront_distribution_id)" --paths "/*"
