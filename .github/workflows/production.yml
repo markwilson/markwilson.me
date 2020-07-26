@@ -57,7 +57,7 @@ jobs:
         id: api
         run: |
           API_GATEWAY_DOMAIN=$(terraform output -json api_domain)
-          echo -n "${API_GATEWAY_ID//$'%0A'/}"
+          echo -n "${API_GATEWAY_DOMAIN//$'%0A'/}"
 
       - name: Create production-ready build
         run: yarn build
