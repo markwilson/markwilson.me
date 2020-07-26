@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - send-message
 
 jobs:
   push:
@@ -52,7 +51,7 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
-        
+
       - name: Create production-ready build
         run: REACT_APP_SEND_MESSAGE_URL=$(terraform output api_domain) yarn build
 
