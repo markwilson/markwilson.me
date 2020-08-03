@@ -39,7 +39,7 @@ jobs:
         run: $(yarn bin surge) build --domain "$SUBDOMAIN-markwilson.surge.sh"
 
       - name: Comment on PR
-        if: github.event.action == 'opened'
+        # if: github.event.action == 'opened'
         uses: actions/github-script@v2
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
