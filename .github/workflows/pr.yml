@@ -24,11 +24,18 @@ jobs:
           # This means the messages can't be tested from a PR on Surge
           REACT_APP_SEND_MESSAGE_URL: "http://localhost:3001/"
 
+      - run: |
+          ref="${github_ref////-}"
+          echo $ref
+          echo "::set-env name=SUBDOMAIN::$ref"
+        env:
+          github_ref: ${{ github.head_ref }}
+
       - name: Surge build
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: $(yarn bin surge) build --domain ${{ github.head_ref }}-markwilson.surge.sh
+        run: $(yarn bin surge) build --domain "$SUBDOMAIN-markwilson.surge.sh"
 
       - name: Comment on PR
         if: github.event.action == 'opened'
@@ -40,5 +47,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '[${{ github.head_ref }}-markwilson.surge.sh](https://${{ github.head_ref }}-markwilson.surge.sh)'
+              body: `[${process.env.SUBDOMAIN}}-markwilson.surge.sh](https://${process.env.SUBDOMAIN}-markwilson.surge.sh)`
             })
