@@ -19,7 +19,7 @@ const Biography = () => {
     <div className={classes.root}>
       <Typography variant="h1">Mark Wilson</Typography>
       <Typography variant="h2">
-        Software Engineer &amp; Engineering Lead
+        Engineering Manager / Software Engineer
       </Typography>
     </div>
   );
