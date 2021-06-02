@@ -28,7 +28,7 @@ jobs:
         run: |
           ref="${github_ref////-}"
           echo $ref
-          echo "::set-env name=SUBDOMAIN::$ref"
+          echo "SUBDOMAIN=$ref" >> $GITHUB_ENV
         env:
           github_ref: ${{ github.head_ref }}
 
@@ -36,7 +36,7 @@ jobs:
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: $(yarn bin surge) build --domain "$SUBDOMAIN-markwilson.surge.sh"
+        run: $(yarn bin surge) build --domain "${{ env.SUBDOMAIN }}-markwilson.surge.sh"
 
       - name: Comment on PR
         if: github.event.action == 'opened'
@@ -48,5 +48,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `[${process.env.SUBDOMAIN}-markwilson.surge.sh](https://${process.env.SUBDOMAIN}-markwilson.surge.sh)`
+              body: `[${{ env.SUBDOMAIN }}-markwilson.surge.sh](https://${{ env.SUBDOMAIN }}-markwilson.surge.sh)`
             })
