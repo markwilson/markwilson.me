@@ -15,7 +15,7 @@ const Headshot = () => {
   return (
     <Image
       color="transparent"
-      style={{width: 200, height: 200, paddingTop: 200}}
+      style={{ width: 200, height: 200, paddingTop: 200 }}
       src="portrait.jpg"
       alt="Headshot of Mark"
       className={classes.headshot}
