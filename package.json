@@ -20,7 +20,7 @@
     "react-app-rewired": "^2.1.6",
     "react-scripts": "3.4.1",
     "snyk": "^1.621.0",
-    "surge": "^0.21.6",
+    "surge": "^0.23.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
