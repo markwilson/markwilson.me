@@ -9,6 +9,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
     )
   );
 
+  // on the off chance they change the color scheme setting, have an event listener for it
   useEffect(() => {
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -19,11 +20,17 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
       });
   }, [setDarkMode, darkMode]);
 
+  // always add/remove the dark class on each render - this stops the transition states running after the initial render
   if (darkMode) {
     document.body.classList.add("dark");
   } else {
     document.body.classList.remove("dark");
   }
+
+  // cleanup the body class - this is to make sure the light mode background doesn't flicker on a slower load
+  useEffect(() => {
+    document.body.classList.remove("app-not-loaded");
+  }, []);
 
   return (
     <>

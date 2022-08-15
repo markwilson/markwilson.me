@@ -9,7 +9,7 @@ const PageNotFound = () => {
     const timer = setInterval(() => {
       if (redirectProgress >= 100) {
         clearInterval(timer);
-        // window.location.href = "/";
+        window.location.href = "/";
         return;
       }
 

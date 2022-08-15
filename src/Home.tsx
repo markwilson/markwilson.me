@@ -1,6 +1,6 @@
-import "./App.css";
+import "./Home.css";
 
-const App = () => (
+const Home = () => (
   <div className="page">
     <h1>Mark Wilson</h1>
     <h2>Engineering Manager</h2>
@@ -15,4 +15,4 @@ const App = () => (
   </div>
 );
 
-export default App;
+export default Home;

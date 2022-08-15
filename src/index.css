@@ -30,6 +30,12 @@ body.dark {
   background-image: var(--background-image-dark);
 }
 
+@media (prefers-color-scheme: dark) {
+  body.app-not-loaded {
+    background-image: var(--background-image-dark);
+  }
+}
+
 html,
 body,
 #root {
