@@ -1,0 +1,23 @@
+.fixed-top-right {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+.theme-switch {
+  background: var(--color-black);
+  border: 0;
+  border-radius: 2rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.theme-switch img {
+  width: 2rem;
+}

@@ -1,6 +1,2 @@
 /node_modules
-/sendMessage/node_modules
 /build
-/.terraform
-/send_message.zip
-/sendMessage/build

@@ -1,0 +1,13 @@
+p {
+  text-align: center;
+  padding: 0;
+  margin: 0 0 calc(var(--stack-spacing) / 4) 0;
+}
+
+a {
+  color: var(--color-black);
+}
+
+.dark a {
+  color: var(--color-white);
+}
