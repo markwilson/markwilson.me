@@ -19,13 +19,11 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
       });
   }, [setDarkMode, darkMode]);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-  }, [darkMode]);
+  if (darkMode) {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
 
   return (
     <>
