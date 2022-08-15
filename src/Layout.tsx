@@ -29,7 +29,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <>
-      <div className="fixed-top-right">
+      <div className="fixed-bottom-right">
         <button
           className="theme-switch"
           onClick={() => {
