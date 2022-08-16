@@ -56,10 +56,10 @@ h1 {
 
 .page {
   width: 300px;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: calc(var(--stack-spacing) * 2) 1rem;
   box-sizing: border-box;
   background: rgba(var(--color-black-rgb-components), 0.8);
   color: var(--color-white);
-  border-radius: 0 0 1rem 1rem;
+  border-radius: 1rem;
 }
