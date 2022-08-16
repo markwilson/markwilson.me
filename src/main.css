@@ -81,6 +81,10 @@ h1 {
   overflow: hidden;
 }
 
+.home .portrait img {
+  border-radius: 1rem;
+}
+
 .home .links {
   text-align: center;
 }
