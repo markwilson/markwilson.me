@@ -5,9 +5,5 @@ p {
 }
 
 a {
-  color: var(--color-black);
-}
-
-.dark a {
   color: var(--color-white);
 }

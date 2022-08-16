@@ -15,12 +15,8 @@ h2 {
 
 .portrait > * {
   border-radius: 1rem;
-  box-shadow: 0 2px 4px 1px rgba(var(--color-black-rgb-components), 0.25);
-  transition: box-shadow 0.5s ease-in-out;
-}
-
-.dark .portrait > * {
   box-shadow: 0 2px 4px 1px rgba(255, 255, 255, 0.25);
+  transition: box-shadow 0.5s ease-in-out;
 }
 
 .links {

@@ -16,9 +16,6 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  box-shadow: 0 2px 4px 1px rgba(255, 255, 255, 0.25);
-}
-.dark .theme-switch {
   box-shadow: 0 2px 4px 1px rgba(var(--color-black-rgb-components), 0.25);
 }
 

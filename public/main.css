@@ -7,39 +7,29 @@
   --color-white: white;
 
   --background-image: linear-gradient(
-    to right top,
-    #f65a83,
-    #ff87b2,
-    #ffe898,
-    #fff8bc
-  );
-  --background-image-dark: linear-gradient(
-    to right top,
-    #46244c,
-    #712b75,
-    #c74b50,
-    #d49b54
+    to top,
+    #1b2430,
+    #51557e,
+    #816797,
+    #d6d5a8
   );
 }
 
-body {
+html {
   background-image: var(--background-image);
+  background-repeat: no-repeat;
+  background-color: #1b2430;
 }
 
-body.dark {
-  background-image: var(--background-image-dark);
-}
-
-@media (prefers-color-scheme: dark) {
-  body.app-not-loaded {
-    background-image: var(--background-image-dark);
-  }
+html,
+body {
+  height: 100%;
 }
 
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
 html,
@@ -57,6 +47,7 @@ h2 {
   font-weight: 400;
   word-spacing: 100vw;
   padding: 0;
+  text-shadow: 1px 2px 3px var(--color-black);
 }
 
 h1 {
@@ -69,12 +60,6 @@ h1 {
   padding: calc(var(--stack-spacing) * 2) 1rem;
   height: 100%;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.6);
-
-  transition: 0.5s ease-in-out background-color, 0.5s ease-in-out color;
-}
-
-.dark .page {
   background: rgba(var(--color-black-rgb-components), 0.5);
   color: var(--color-white);
 }
