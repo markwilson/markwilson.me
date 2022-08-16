@@ -1,7 +1,7 @@
 :root {
   --stack-spacing: 1.5rem;
 
-  --color-black-rgb-components: 27, 38, 48;
+  --color-black-rgb-components: 27, 38, 48; /* #1B2430 */
   --color-black: rgb(var(--color-black-rgb-components));
 
   --color-white: white;
@@ -64,6 +64,7 @@ h1 {
   border-radius: 1rem;
 }
 
+/* home */
 .home h2 {
   text-align: right;
   margin: 0 0 calc(var(--stack-spacing) * 2) 0;
@@ -92,15 +93,18 @@ h1 {
   width: 2rem;
 }
 
+/* 404 page */
 .not-found p {
   text-align: center;
   padding: 0;
+  margin: 0 0 calc(var(--stack-spacing) / 4) 0;
 }
 
 .not-found a {
   color: var(--color-white);
 }
 
+/* progress bar */
 .progress-container,
 .progress-bar {
   height: 1rem;
