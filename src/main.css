@@ -42,8 +42,8 @@ body {
 
 h1,
 h2 {
-  font-size: calc(min(3rem, 48px));
-  line-height: calc(max(2.5rem, 44px));
+  font-size: 3rem;
+  line-height: 2.5rem;
   font-weight: 400;
   word-spacing: 100vw;
   padding: 0;
@@ -72,13 +72,13 @@ h1 {
 
 .home .portrait {
   text-align: center;
-  margin-bottom: calc(var(--stack-spacing) * 2);
-}
-
-.home .portrait img {
-  border-radius: 1rem;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto calc(var(--stack-spacing) * 2) auto;
   box-shadow: 0 2px 4px 1px rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
   background-color: white;
+  overflow: hidden;
 }
 
 .home .links {
@@ -91,6 +91,7 @@ h1 {
 .home .links img {
   vertical-align: bottom;
   width: 2rem;
+  height: 2rem;
 }
 
 /* 404 page */
