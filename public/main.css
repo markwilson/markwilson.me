@@ -1,14 +1,14 @@
 :root {
   --stack-spacing: 1.5rem;
 
-  --color-black-rgb-components: 58, 52, 66;
+  --color-black-rgb-components: 27, 38, 48; /* #1B2430 */
   --color-black: rgb(var(--color-black-rgb-components));
 
   --color-white: white;
 
   --background-image: linear-gradient(
     to top,
-    #1b2430,
+    var(--color-black),
     #51557e,
     #816797,
     #d6d5a8
@@ -58,8 +58,8 @@ h1 {
   width: 300px;
   margin: 0 auto;
   padding: calc(var(--stack-spacing) * 2) 1rem;
-  height: 100%;
   box-sizing: border-box;
-  background: rgba(var(--color-black-rgb-components), 0.5);
+  background: rgba(var(--color-black-rgb-components), 0.8);
   color: var(--color-white);
+  border-radius: 0 0 1rem 1rem;
 }
