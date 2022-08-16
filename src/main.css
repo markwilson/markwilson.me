@@ -1,7 +1,7 @@
 :root {
   --stack-spacing: 1.5rem;
 
-  --color-black-rgb-components: 27, 38, 48; /* #1B2430 */
+  --color-black-rgb-components: 27, 38, 48;
   --color-black: rgb(var(--color-black-rgb-components));
 
   --color-white: white;
@@ -62,4 +62,59 @@ h1 {
   background: rgba(var(--color-black-rgb-components), 0.8);
   color: var(--color-white);
   border-radius: 1rem;
+}
+
+.home h2 {
+  text-align: right;
+  margin: 0 0 calc(var(--stack-spacing) * 2) 0;
+}
+
+.home .portrait {
+  text-align: center;
+  margin-bottom: calc(var(--stack-spacing) * 2);
+}
+
+.home .portrait img {
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px 1px rgba(255, 255, 255, 0.25);
+  background-color: white;
+}
+
+.home .links {
+  text-align: center;
+}
+
+.home .links a {
+  display: inline-block;
+}
+.home .links img {
+  vertical-align: bottom;
+  width: 2rem;
+}
+
+.not-found p {
+  text-align: center;
+  padding: 0;
+}
+
+.not-found a {
+  color: var(--color-white);
+}
+
+.progress-container,
+.progress-bar {
+  height: 1rem;
+}
+
+.progress-container {
+  background-color: var(--color-black);
+  overflow: hidden;
+  border-radius: 0.3rem;
+  border: 1px solid var(--color-black);
+  margin-bottom: var(--stack-spacing);
+}
+
+.progress-bar {
+  background: var(--color-white);
+  transition: width 0.5s ease-in-out;
 }
