@@ -5,8 +5,9 @@ const SlowLoadingImage: FC<
     width: number;
     height: number;
     src: string;
+    alt: string;
   } & ImgHTMLAttributes<HTMLImageElement>
-> = (props) => {
+> = ({ width, height, src, alt, ...props }) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -15,19 +16,17 @@ const SlowLoadingImage: FC<
     }
 
     const img = new Image();
-    img.src = props.src;
+    img.src = src;
     img.addEventListener("load", () => {
       setLoaded(true);
     });
-  }, [setLoaded]);
+  }, [setLoaded, loaded, src]);
 
   if (!loaded) {
-    return (
-      <div style={{ width: props.width, height: props.height }}>&nbsp;</div>
-    );
+    return <div style={{ width, height }}>&nbsp;</div>;
   }
 
-  return <img {...props} />;
+  return <img {...props} alt={alt} src={src} />;
 };
 
 export default SlowLoadingImage;
