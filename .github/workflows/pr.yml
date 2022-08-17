@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - name: Checkout the code
+        uses: actions/checkout@v3
 
-      - name: Setup node
+      - name: Setup node (v18)
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Setup SUBDOMAIN environment variable
         run: |
@@ -25,14 +25,11 @@ jobs:
         env:
           github_ref: ${{ github.head_ref }}
 
-      - name: Install dependencies
-        run: yarn install
+      - name: Install app dependencies
+        run: yarn
 
-      - name: Create production-ready build
+      - name: Build static site
         run: yarn build
-        env:
-          # This means the messages can't be tested from a PR on Surge
-          REACT_APP_SEND_MESSAGE_URL: "http://localhost:3001/"
 
       - name: Surge build
         env:

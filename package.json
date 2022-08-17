@@ -1,49 +1,31 @@
 {
   "name": "markwilson.me",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^18.0.12",
-    "@types/react-dom": "^18.0.5",
-    "axios": "0.21.2",
-    "material-ui-image": "^3.2.3",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+  "engines": {
+    "node": "18"
   },
+  "dependencies": {},
   "devDependencies": {
-    "concurrently": "^7.2.1",
-    "react-app-rewire-multiple-entry": "^2.2.0",
-    "react-app-rewired": "^2.1.6",
-    "react-scripts": "3.4.1",
-    "snyk": "^1.621.0",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
+    "favicons": "6",
+    "favicons-webpack-plugin": "^5.0.2",
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.1.0",
+    "html-minimizer-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "image-webpack-loader": "^8.1.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "style-loader": "^3.3.1",
     "surge": "^0.23.1",
-    "typescript": "~3.7.2"
+    "url-loader": "^4.1.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0"
   },
   "scripts": {
-    "start:sendMessage": "sam local start-api -p 3001",
-    "start:client": "REACT_APP_SEND_MESSAGE_URL=http://localhost:3001 react-app-rewired start --script-version react-script-ts",
-    "start": "concurrently npm:start:client npm:start:sendMessage",
-    "build": "react-app-rewired build --script-version react-script-ts",
-    "eject": "react-app-rewired eject --script-version react-script-ts",
-    "test": "snyk test"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=production"
   }
 }

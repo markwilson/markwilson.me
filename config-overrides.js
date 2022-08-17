@@ -1,5 +1,3 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
 const multipleEntry = require("react-app-rewire-multiple-entry")([
   {
     entry: "src/404.tsx",
@@ -9,7 +7,7 @@ const multipleEntry = require("react-app-rewire-multiple-entry")([
 ]);
 
 module.exports = {
-  webpack: (config, env) => {
+  webpack: (config) => {
     config.plugins = config.plugins.filter((plugin) => {
       return !["ManifestPlugin", "GenerateSW"].includes(
         plugin.constructor.name

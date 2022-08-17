@@ -10,59 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - name: Checkout the code
+        uses: actions/checkout@v3
 
-      - name: Setup node
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v1
+
+      - name: Setup node (v18)
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
-      - name: Install dependencies
-        run: yarn install
+      - name: Install app dependencies
+        run: yarn
 
-      - name: Install send message dependencies
-        run: yarn install
-        working-directory: ./sendMessage
+      - name: Build static site
+        run: yarn build
 
-      - name: Build send message function
-        run: yarn run build
-        working-directory: ./sendMessage
-
-      - name: Package send message function
-        run: zip -r ../../send_message.zip .
-        working-directory: ./sendMessage/build
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
+          path: "./build/"
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 0.12.26
-          terraform_wrapper: false
-
-      - name: Initialise Terraform
-        run: terraform init
-
-      - name: Validate Terraform
-        run: terraform validate
-
-      - name: Terraform Plan
-        run: terraform plan -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -var="recaptcha_secret=${{ secrets.RECAPTCHA_SECRET }}" -var="send_to=${{ secrets.SEND_TO }}"
-
-      - name: Create production-ready build
-        run: REACT_APP_SEND_MESSAGE_URL=$(terraform output api_domain) yarn build
-
-      - name: Deploy to S3
-        run: aws s3 sync --delete --acl public-read build s3://markwilson.me/
-
-      - name: Clear CloudFront cache
-        run: aws cloudfront create-invalidation --distribution-id "$(terraform output cloudfront_distribution_id)" --paths "/*"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@main

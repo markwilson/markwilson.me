@@ -1,0 +1,129 @@
+:root {
+  --stack-spacing: 1.5rem;
+
+  --color-black-rgb-components: 27, 38, 48; /* #1B2430 */
+  --color-black: rgb(var(--color-black-rgb-components));
+
+  --color-white: white;
+
+  --background-image: linear-gradient(
+    to top,
+    var(--color-black),
+    #51557e,
+    #816797,
+    #d6d5a8
+  );
+}
+
+html {
+  background-image: var(--background-image);
+  background-repeat: no-repeat;
+  background-color: #1b2430;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Eczar, serif;
+  color: var(--color-black);
+}
+
+h1,
+h2 {
+  font-size: 3rem;
+  line-height: 2.5rem;
+  font-weight: 400;
+  word-spacing: 100vw;
+  padding: 0;
+  text-shadow: 1px 2px 3px var(--color-black);
+}
+
+h1 {
+  margin: 0 0 var(--stack-spacing) 0;
+}
+
+.page {
+  width: 300px;
+  margin: 1rem auto;
+  padding: calc(var(--stack-spacing) * 2) 1rem;
+  box-sizing: border-box;
+  background: rgba(var(--color-black-rgb-components), 0.8);
+  color: var(--color-white);
+  border-radius: 1rem;
+}
+
+/* home */
+.home h2 {
+  text-align: right;
+  margin: 0 0 calc(var(--stack-spacing) * 2) 0;
+}
+
+.home .portrait {
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto calc(var(--stack-spacing) * 2) auto;
+  box-shadow: 0 2px 4px 1px rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+  background-color: white;
+  overflow: hidden;
+}
+
+.home .portrait img {
+  border-radius: 1rem;
+}
+
+.home .links {
+  text-align: center;
+}
+
+.home .links a {
+  display: inline-block;
+}
+.home .links img {
+  vertical-align: bottom;
+  width: 2rem;
+  height: 2rem;
+}
+
+/* 404 page */
+.not-found p {
+  text-align: center;
+  padding: 0;
+  margin: 0 0 calc(var(--stack-spacing) / 4) 0;
+}
+
+.not-found a {
+  color: var(--color-white);
+}
+
+/* progress bar */
+.progress-container,
+.progress-bar {
+  height: 1rem;
+}
+
+.progress-container {
+  background-color: var(--color-black);
+  overflow: hidden;
+  border-radius: 0.3rem;
+  border: 1px solid var(--color-black);
+  margin-bottom: var(--stack-spacing);
+}
+
+.progress-bar {
+  background: var(--color-white);
+  transition: width 0.5s ease-in-out;
+}
