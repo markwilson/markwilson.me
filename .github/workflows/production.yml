@@ -41,10 +41,12 @@ jobs:
       - name: Build static site
         run: yarn build
 
-      - name: Run tests
-        run: |
-          yarn start:production-like-server &
-          yarn test
+      - name: Run e2e tests
+        uses: cypress-io/github-action@v4
+        with:
+          install: false
+          start: yarn start:production-like-server
+          command: yarn test
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
