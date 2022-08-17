@@ -7,6 +7,7 @@ resource "aws_route53_record" "site" {
   name    = "markwilson.me"
   type    = "A"
   records = ["185.199.108.153", "185.199.109.153", "185.199.110.153", "185.199.111.153"] # GitHub IPs
+  ttl     = 3600
 }
 
 resource "aws_route53_record" "verification" {
