@@ -1,5 +1,14 @@
 import "./main.css";
 
+import * as Sentry from "@sentry/browser";
+import { BrowserTracing } from "@sentry/tracing";
+
+Sentry.init({
+  dsn: "https://1028473895cf4a1b9979b6a00f0b2052@o1356489.ingest.sentry.io/6660188",
+  integrations: [new BrowserTracing()],
+  tracesSampleRate: 1.0,
+});
+
 for (const img of document.querySelectorAll(".portrait img")) {
   const { parentElement } = img;
   if (img.naturalWidth) {
@@ -42,4 +51,13 @@ if ("fonts" in document && !document.fonts.check("3rem Eczar")) {
       }
     }, 1000);
   });
+}
+
+for (const progressBar of document.getElementsByClassName("progress-bar")) {
+  let counter = 0;
+  const timer = setInterval(() => {
+    if ((counter++, counter > 5))
+      return clearInterval(timer), void (window.location.href = "/");
+    progressBar.style.width = 20 * counter + "%";
+  }, 1000);
 }

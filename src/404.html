@@ -24,14 +24,5 @@
       </div>
       <p><a href="/">Go to markwilson.me</a></p>
     </div>
-    <script>
-      const progressBar = document.getElementsByClassName("progress-bar")[0];
-      let counter = 0;
-      const timer = setInterval(() => {
-        if ((counter++, counter > 5))
-          return clearInterval(timer), void (window.location.href = "/");
-        progressBar.style.width = 20 * counter + "%";
-      }, 1e3);
-    </script>
   </body>
 </html>

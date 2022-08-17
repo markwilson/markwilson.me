@@ -5,7 +5,10 @@
   "engines": {
     "node": "18"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@sentry/browser": "^7.11.0",
+    "@sentry/tracing": "^7.11.0"
+  },
   "devDependencies": {
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
