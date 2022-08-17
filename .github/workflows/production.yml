@@ -46,7 +46,6 @@ jobs:
         with:
           install: false
           start: yarn start:production-like-server
-          command: yarn test
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

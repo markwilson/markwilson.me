@@ -36,7 +36,6 @@ jobs:
         with:
           install: false
           start: yarn start:production-like-server
-          command: yarn test
 
       - name: Surge build
         env:
