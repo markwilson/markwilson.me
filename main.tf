@@ -1,6 +1,7 @@
 provider "aws" {
   region = "eu-west-1"
 }
+
 resource "aws_route53_record" "site" {
   zone_id = "Z2NO2HNDAEBJY7"
   name    = "markwilson.me"
