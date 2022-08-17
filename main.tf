@@ -13,7 +13,7 @@ resource "aws_route53_record" "a_record" {
 resource "aws_route53_record" "aaaa_record" {
   zone_id = "Z2NO2HNDAEBJY7"
   name    = "markwilson.me"
-  type    = "A"
+  type    = "AAAA"
   records = ["2606:50c0:8000::153", "2606:50c0:8001::153", "2606:50c0:8002::153", "2606:50c0:8003::153"] # GitHub IPs
   ttl     = 3600
 }
