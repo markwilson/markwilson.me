@@ -12,6 +12,7 @@
   "devDependencies": {
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
+    "cypress": "^10.6.0",
     "favicons": "6",
     "favicons-webpack-plugin": "^5.0.2",
     "file-loader": "^6.2.0",
@@ -20,6 +21,7 @@
     "html-webpack-plugin": "^5.5.0",
     "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.6.1",
+    "serve": "^14.0.1",
     "style-loader": "^3.3.1",
     "surge": "^0.23.1",
     "url-loader": "^4.1.1",
@@ -29,6 +31,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --mode=development",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "start:production-like-server": "serve ./build",
+    "test": "cypress"
   }
 }
