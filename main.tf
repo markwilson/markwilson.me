@@ -92,6 +92,7 @@ resource "aws_route53_record" "verification" {
   name    = "_github-pages-challenge-markwilson.markwilson.me"
   type    = "TXT"
   records = ["c5d30a00ecd790beb0f73122665f53"]
+  ttl     = 3600
 }
 
 data "aws_iam_policy_document" "AWSLambdaTrustPolicy" {
