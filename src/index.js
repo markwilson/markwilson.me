@@ -5,7 +5,7 @@ import { fadeInPortraitImage } from "./portrait";
 import { fadeInHeadings } from "./headings";
 import { startProgressBar } from "./progress-bar";
 
-// initSentry();
+initSentry();
 fadeInPortraitImage();
 fadeInHeadings();
 startProgressBar(() => (window.location.href = "/"));
