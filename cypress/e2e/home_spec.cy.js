@@ -15,6 +15,15 @@ describe("Home page", () => {
     cy.contains("Engineering Manager").should("be.visible");
   });
 
+  it("Show my previous jobs", () => {
+    cy.contains("Engineering Lead").should("be.visible");
+    cy.contains("Onfido").should("be.visible");
+    cy.contains("Engineering Team Lead").should("be.visible");
+    cy.contains("Paddle").should("be.visible");
+    cy.contains("Technical Team Lead").should("be.visible");
+    cy.contains("Rippleffect").should("be.visible");
+  });
+
   it("Has a link to LinkedIn", () => {
     cy.get("a")
       .should("be.visible")

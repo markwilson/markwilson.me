@@ -2,10 +2,10 @@ import "./main.css";
 
 import { init as initSentry } from "./sentry";
 import { fadeInPortraitImage } from "./portrait";
-import { fadeInHeadings } from "./headings";
+import { fadeInText } from "./text";
 import { startProgressBar } from "./progress-bar";
 
 initSentry();
 fadeInPortraitImage();
-fadeInHeadings();
+fadeInText();
 startProgressBar(() => (window.location.href = "/"));
