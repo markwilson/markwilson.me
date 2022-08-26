@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
 permissions:
   contents: read
   pages: write

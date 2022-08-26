@@ -6,6 +6,7 @@ const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const SentryPlugin = require("@sentry/webpack-plugin");
 
 let htmlFiles = [];
 let directories = ["src"];
@@ -52,6 +53,12 @@ module.exports = {
   },
 
   plugins: [
+    new SentryPlugin({
+      include: "./dist",
+      org: "mark-wilson",
+      project: "markwilson-me",
+    }),
+
     new MiniCssExtractPlugin(),
     new FaviconsWebpackPlugin("./src/favicon.png"),
 
