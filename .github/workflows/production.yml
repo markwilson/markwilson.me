@@ -105,6 +105,8 @@ jobs:
         with:
           name: build
 
+      - run: ls -al
+
       - name: Setup node (v18)
         uses: actions/setup-node@v3
         with:
