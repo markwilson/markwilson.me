@@ -133,6 +133,16 @@ jobs:
           install: false
           start: yarn start:production-like-server
 
+      - name: Upload Cypress results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-results
+          path: |
+            ./cypress/screenshots
+            ./cypress/videos
+          retention-days: 3
+
   deploy:
     runs-on: ubuntu-latest
 
