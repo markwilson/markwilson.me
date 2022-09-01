@@ -76,6 +76,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Install app dependencies
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: yarn
+
       - name: Build static site
         run: yarn build
 
@@ -118,6 +122,10 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install app dependencies
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: yarn
 
       - name: Run e2e tests
         uses: cypress-io/github-action@v4
