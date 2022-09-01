@@ -1,3 +1,5 @@
 /node_modules
 /build
 /.terraform
+/cypress/videos
+/cypress/screenshots
