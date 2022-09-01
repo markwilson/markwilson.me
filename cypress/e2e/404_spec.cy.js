@@ -1,6 +1,6 @@
-describe("Home page", () => {
+describe("404 page", () => {
   beforeEach(() => {
-    cy.visit("/404");
+    cy.visit("/404.html");
   });
 
   it("Successfully loads", () => {
