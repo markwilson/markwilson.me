@@ -1,9 +1,7 @@
 const FADE_IN_DELAY = 1000;
 
 const fontsFeaturesAvailable = () =>
-  !"fonts" in document ||
-  !"check" in document.fonts ||
-  !"ready" in document.fonts;
+  "fonts" in document && "check" in document.fonts && "ready" in document.fonts;
 
 function fadeInFontForQuerySelector(fontName, querySelector) {
   if (document.fonts.check(fontName)) {
@@ -26,7 +24,7 @@ function fadeInFontForQuerySelector(fontName, querySelector) {
 }
 
 function fadeInText() {
-  if (fontsFeaturesAvailable()) {
+  if (!fontsFeaturesAvailable()) {
     return;
   }
 
