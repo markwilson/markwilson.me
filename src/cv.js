@@ -1,11 +1,16 @@
 const initCv = () => {
-  let showingCv = false;
-
   const cvButton = document.getElementById("cv-button");
+
   const elements = {
     home: document.getElementById("blurb"),
     cv: document.getElementById("cv"),
   };
+
+  if (!cvButton || !elements.home || !elements.cv) {
+    return;
+  }
+
+  let showingCv = false;
 
   const showRelevantContent = () => {
     let showElement = elements.home;
