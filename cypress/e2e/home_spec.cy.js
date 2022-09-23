@@ -16,6 +16,8 @@ describe("Home page", () => {
   });
 
   it("Show my previous jobs", () => {
+    cy.get("button").should("be.visible").click();
+
     cy.contains("Engineering Lead").should("be.visible");
     cy.contains("Onfido").should("be.visible");
     cy.contains("Engineering Team Lead").should("be.visible");
@@ -33,7 +35,7 @@ describe("Home page", () => {
 
   it("Loads my face", () => {
     cy.get("img")
-      .should("have.attr", "alt", "Mark Wilson's headshot")
+      .should("have.attr", "alt", "Mark Wilson's portrait")
       .should("be.visible")
       .and(($img) => {
         expect($img[0].naturalWidth).to.be.greaterThan(0);
