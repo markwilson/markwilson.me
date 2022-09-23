@@ -6,12 +6,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Eczar&family=Ropa+Sans&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap"
       rel="stylesheet"
     />
 
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#d6d5a8" />
+    <meta name="theme-color" content="#307351" />
     <meta name="description" content="Mark Wilson: Engineering Manager" />
     <meta
       name="keywords"
@@ -21,35 +21,54 @@
     <title>Mark Wilson</title>
   </head>
   <body>
-    <div class="page home">
-      <div class="portrait">
-        <img
-          src="assets/images/portrait.jpg"
-          alt="Mark Wilson's headshot"
-          width="200px"
-          height="200px"
-        />
+    <div id="root">
+      <div id="portrait">
+        <img src="assets/images/portrait.jpg" alt="Mark Wilson's portrait" />
+        <h1 id="heading-image-for-small-screens">
+          <img
+            src="assets/images/heading-over-background.svg"
+            alt="Mark Wilson: Engineering Manager"
+          />
+        </h1>
       </div>
-      <h1>Mark Wilson</h1>
-      <h2>Engineering Manager</h2>
-      <h3>GoCardless</h3>
-      <div class="previous-roles">
-        <p>Previously...</p>
-        <dl>
-          <dt>Engineering Lead</dt>
-          <dd>Onfido</dd>
+      <div id="content">
+        <h1 id="heading-image">
+          <img
+            src="assets/images/heading.svg"
+            alt="Mark Wilson: Engineering Manager"
+          />
+        </h1>
+        <p id="blurb">
+          I'm Mark Wilson; an Engineering Manager based in London, UK. My
+          background is in developing software, mainly in payments/FinTech.
+        </p>
+        <div id="links">
+          <button id="cv-button">CV</button>
+          <a
+            class="button-link"
+            href="https://www.linkedin.com/in/mark-wilson-34611923/"
+            >LinkedIn</a
+          >
+        </div>
+        <div id="cv">
+          <h2>Currently</h2>
+          <dl>
+            <dt>Group Engineering Manager</dt>
+            <dd>GoCardless</dd>
+          </dl>
 
-          <dt>Engineering Team Lead</dt>
-          <dd>Paddle</dd>
+          <h2>Previously</h2>
+          <dl>
+            <dt>Engineering Lead</dt>
+            <dd>Onfido</dd>
 
-          <dt>Technical Team Lead</dt>
-          <dd>Rippleffect</dd>
-        </dl>
-      </div>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/mark-wilson-34611923">
-          <img src="assets/images/linkedin.png" alt="LinkedIn logo" />
-        </a>
+            <dt>Engineering Team Lead</dt>
+            <dd>Paddle</dd>
+
+            <dt>Technical Team Lead</dt>
+            <dd>Rippleffect</dd>
+          </dl>
+        </div>
       </div>
     </div>
   </body>
